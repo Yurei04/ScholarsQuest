@@ -4,9 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholar's Quest Map</title>
+    <link rel="stylesheet" href="../CSS/navigation.css">
     <link rel="stylesheet" href="../CSS/scholarsQuestMap.css">
 </head>
 <body>
+
+    
+    <header class="nav-header">
+        <nav class="nav nav-container">
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="bi bi-arrow-up-right"></i>
+                            <span> Home </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">
+                            <i class="bi bi-arrow-up-right"></i>
+                            <span> About </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./Frontend/HTML/hobbies.html" class="nav-link">
+                            <i class="bi bi-arrow-up-right"></i>
+                            <span> How To play </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./Frontend/HTML/gallery.html" class="nav-link">
+                            <i class="bi bi-arrow-up-right"></i>
+                            <span> Settings </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="openAboutModal(event)" class="nav-link">
+                            <i class="bi bi-arrow-up-right"></i>
+                            <span> Exit </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <div class="map-wrapper">
         <div class="map-container">
             <div class="hist-academy">
