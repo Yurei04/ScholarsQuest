@@ -5,6 +5,7 @@ let words = ["NATURE", "DISEASE", "OXYGEN", "CLIMATE"];
 let guesses = 0;
 let guessLimit = 0;
 let questionsAnswered = 0;
+let correctGuesses = 0;
 let currentSpell;
 let randomWord;
 let countDownTimer;
