@@ -1,95 +1,87 @@
+import { enemyHP, reduceEnemyHp } from "./";
+
 let words = ["NATURE", "DISEASE", "OXYGEN", "CLIMATE"];
 
-let spells = {
-    "simple": {
-        questions: 1,
-        damage: 2
-    },
-
-    "intermediate": {
-        questions: 2,
-        damage: 4
-    },
-
-    "complex": {
-        questions: 3,
-        damage: 6
-    }
-}
-
 let guesses = 0;
-let guessLimit = 3;
+let guessLimit = 0;
 let questionsAnswered = 0;
 let currentSpell;
 let randomWord;
 let countDownTimer;
 let timeLeft = 30;
 
-function selectSpell(spell) {
-    let spellType = spell.id;
-
-    switch(spellType) {
-        case "simple": {
-            if(questionsAnswered != simple.questions) {
-
-            } else {
-                spellComplexityFunction()
-            }
-        }
-        break;
-        case "intermediate" : {
-            if(questionsAnswered != intermediate.questions) {
-
-            } else {
-                spellComplexityFunction()
-            }
-        } 
-        break;
-        case "complex": {
-            if(questionsAnswered != complex.questions) {
-
-            } else {
-                spellComplexityFunction()
-            }
-        }
+let spells = {
+    "simple": {
+        questions: 1,
+        maxGuesses: 3,
+        damage: 2
+    },
+    "intermediate": {
+        questions: 2,
+        maxGuesses: 2,
+        damage: 4
+    },
+    "complex": {
+        questions: 3,
+        maxGuesses: 1,
+        damage: 6
     }
-
-    return spell
 }
 
-function spellComplexityFunction() {
-    clearInterval(countDownTimer)
-    questionsAnswered += 1
-    spellActivation();
-    delay(3000)
-    clearing();
-    wordBoxMaker(generateWord());
-    correct();
+function selectSpell(spell) {
+    let spellType = spell.id;
+    currentSpell = spells[spellType]; 
+    guessLimit = currentSpell.maxGuesses;
+    questionsAnswered = 0;
+    correctGuesses = 0;
+    spellComplexityFunction();
+}
 
+async function spellComplexityFunction() {
+    if (questionsAnswered === currentSpell.questions) { 
+        spellActivation()
+        return;
+    } else {
+        clearInterval(countDownTimer);
+        guesses = 0;
+        questionsAnswered += 1;
+        await delay(3000); 
+        clearing();
+        wordBoxMaker(generateWord());
+        imgShow();
+    }
+}
+
+function spellActivation() {
+    let damage = currentSpell.damage;
+    reduceEnemyHp(damage);
+
+    if(enemyHP <= 0) {
+        return;
+    } else {
+        spellComplexityFunction();
+    }
 }
 
 function generateWord() {
-    let randomWord = words[Math.floor(Math.random() * words.length)];
+    randomWord = words[Math.floor(Math.random() * words.length)]; 
     let cuttedWords = randomWord.split("");
-
     return cuttedWords;
 }
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms)); 
-};
+}
 
-function wordBoxMaker() {
+function wordBoxMaker(cuttedWords) {
     let boxContainer = document.getElementById("boxes");
-
     boxContainer.innerHTML = "";
 
     cuttedWords.forEach(letter => {
         let createBox = document.createElement("div");
         createBox.className = "letter-box";
-        createBox.innerHTML = "_"
+        createBox.innerHTML = "_";
         boxContainer.appendChild(createBox);
-
     });
 }
 
@@ -114,21 +106,30 @@ function checking() {
     let guessedWord = Array.from(document.querySelectorAll(".letter-box")).map(box => box.innerHTML).join("");
 
     if (guessedWord === randomWord) {
-        spellComplexityFunction()
+        correctGuesses += 1;
+        if (correctGuesses === currentSpell.questions) {
+            spellActivation()
+        } else {
+            spellComplexityFunction();
+        }
     } else {
         incorrect();
     }
-};
+}
 
-
-function incorrect() {
-    document.querySelectorAll("p").forEach(typedWord => {
-        typedWord.style.color = "red";
-    });
+async function incorrect() {
     guesses += 1;
 
-    if(guesses == guessLimit) {
-        console("Spell Not activated")
+    if (guesses === guessLimit) {
+        clearing()
+    } else {
+        document.querySelectorAll("p").forEach(typedWord => {
+            typedWord.style.color = "red";
+        });
+        await delay(2000);
+        document.querySelectorAll("p").forEach(typedWord => {
+            typedWord.style.color = "#fff";
+        });
     }
 }
 
@@ -143,6 +144,3 @@ function clearing() {
     guesses = 0;
     clearInterval(countDownTimer);
 }
-
-
-damage.export 
