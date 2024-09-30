@@ -35,7 +35,8 @@ function selectSpell(spell) {
     guessLimit = currentSpell.maxGuesses;
     questionsAnswered = 0;
     correctGuesses = 0;
-    spellComplexityFunction();
+    wordBoxMaker(generateWord());
+    imgShow();
 }
 
 async function spellComplexityFunction() {
@@ -117,6 +118,14 @@ function checking() {
         incorrect();
     }
 }
+
+
+document.getElementById("SciChecker").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        checkingProblem();
+    }
+});
+
 
 async function incorrect() {
     guesses += 1;

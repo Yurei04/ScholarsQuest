@@ -327,6 +327,6 @@ var temp = document.querySelector('.time');
   				}
 
   			}
-  	}
+  	
 
   	document.addEventListener("keydown", typing, false);
