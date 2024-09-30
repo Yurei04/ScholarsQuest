@@ -33,7 +33,56 @@ let tryLimit = 0;
 let tries = 0;
 let correctAnswers = 0;
 let randomProblem;
+let timerDisplay = document.querySelector('.time');
+let submitButton = document.querySelector("button");
+let mathProblemTimer = new Timer(30, updateMathTimerUI, mathGameOver);
 
+class Timer {
+    constructor(seconds, onTick, onComplete) {
+      this.seconds = seconds;
+      this.initialSeconds = seconds;
+      this.onTick = onTick; 
+      this.onComplete = onComplete; // Callback when timer reaches 0
+      this.interval = null;
+    }
+  
+    start() {
+      this.interval = setInterval(() => {
+        this.seconds--;
+        this.onTick(this.seconds);
+  
+        if (this.seconds <= 0) {
+          this.stop();
+          this.onComplete();
+        }
+      }, 1000);
+    }
+  
+    stop() {
+      clearInterval(this.interval);
+      this.seconds = this.initialSeconds;
+    }
+  
+    reset() {
+      this.stop();
+      this.seconds = this.initialSeconds;
+    }
+}
+  
+const updateMathTimerUI = (secondsLeft) => {
+    timerDisplay.innerHTML = secondsLeft;
+};
+
+const mathGameOver = () => {
+    alert("Time’s up! You scored " + correctAnswers);
+    submitButton.disabled = false;
+};
+
+submitButton.addEventListener("click", function(e) {
+    let selectedRune = document.getElementById("runeSelect").value;
+    selectSorcery(selectedRune);
+    mathProblemTimer.start(); 
+});
 
 function selectSorcery(rune) {
     let runeType = rune.id;
@@ -47,7 +96,6 @@ function selectSorcery(rune) {
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 function formulaProblemGenerator() {
     let problems;
     if (currentRune === runes.simple) {
@@ -56,16 +104,18 @@ function formulaProblemGenerator() {
         problems = Object.values(intermediateProblems);
     } else if (currentRune === runes.complex) {
         problems = Object.values(complexProblems);
-    } 
+    }
     randomProblem = problems[Math.floor(Math.random() * problems.length)];
+    document.getElementById("problem-container").innerHTML = randomProblem.question; 
 }
+
 
 function checkingProblem() {
     let trueAnswer = parseInt(document.getElementById("answer").value);
 
     if (trueAnswer === randomProblem.answer) {
         correctAnswers += 1;
-        if(correctAnswers === runes.problems) {
+        if(correctAnswers === currentRune.problems) {
             runeActivation()
         } else {
             runeComplexityFunction()
@@ -81,12 +131,13 @@ document.getElementById("techChecker").addEventListener("keydown", function(even
     }
 });
 
+
 async function runeComplexityFunction() {
     if(correctAnswers === currentRune.problems) {
         runeActivation();
         return;
     } else {
-        clearInterval(countDownTimer);
+        clearInterval(mathProblemTimer);  
         tries = 0;
         await delay(3000)
         clearing();
@@ -121,5 +172,5 @@ function clearing() {
     let problemContainer = document.getElementById("problem-container");
     problemContainer.innerHTML = "";
     tries = 0;
-    clearInterval(countDownTimer);
+    clearInterval(mathProblemTimer);  
 }

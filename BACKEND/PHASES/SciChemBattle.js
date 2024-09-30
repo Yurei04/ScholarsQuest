@@ -9,7 +9,9 @@ let correctGuesses = 0;
 let currentSpell;
 let randomWord;
 let countDownTimer;
-let timeLeft = 30;
+let timerDisplay = document.querySelector('.time');
+let button = document.querySelector("button");
+let gameTimer = new Timer(60, updateTimerUI, gameOver);
 
 let spells = {
     "simple": {
@@ -28,6 +30,52 @@ let spells = {
         damage: 6
     }
 }
+
+class Timer {
+    constructor(seconds, onTick, onComplete) {
+        this.seconds = seconds;
+        this.initialSeconds = seconds;
+        this.onTick = onTick; 
+        this.onComplete = onComplete; 
+        this.interval = null;
+    }
+
+    start() {
+        this.interval = setInterval(() => {
+        this.seconds--;
+        this.onTick(this.seconds);
+
+        if (this.seconds <= 0) {
+            this.stop();
+            this.onComplete();
+        }
+        }, 1000);
+    }
+
+    stop() {
+        clearInterval(this.interval);
+        this.seconds = this.initialSeconds;
+    }
+
+    reset() {
+        this.stop();
+        this.seconds = this.initialSeconds;
+    }
+}
+
+const updateTimerUI = (secondsLeft) => {
+    timerDisplay.innerHTML = secondsLeft;
+};
+
+const gameOver = () => {
+    alert("Game over! Your total score is " + points);
+    button.disabled = false;
+};
+
+button.addEventListener("click", function(e) {
+    selectSpell(spell);
+    gameTimer.start(); 
+  });
 
 function selectSpell(spell) {
     let spellType = spell.id;
@@ -95,13 +143,12 @@ function imgShow() {
     imgContainer2.innerHTML = "";
 
     let createImg1 = document.createElement("img");
-    let firstImg = createImg1.src = "hint2- " + randomWord;
-    imgContainer1.appendChild(firstImg);
-
-
+    createImg1.src = "hint2- " + randomWord;
+    imgContainer1.appendChild(createImg1);
+    
     let createImg2 = document.createElement("img");
-    let secondImg = createImg2.src = "hint1- " + randomWord;
-    imgContainer2.appendChild(secondImg);
+    createImg2.src = "hint1- " + randomWord;
+    imgContainer2.appendChild(createImg2);    
 }
 
 function checking() {
