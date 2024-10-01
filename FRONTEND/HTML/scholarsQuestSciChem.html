@@ -6,6 +6,10 @@
     <title>Science - Chemistry Academy</title>
     <link rel="stylesheet" href="../CSS/navigation.css">
     <link rel="stylesheet" href="../CSS/scholarsQuestSciChem.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -50,22 +54,30 @@
     </header>
 
     <div class="academy-wrapper">
-
         <div class="lecture-container">
-
+            
         </div>
-        <div class="hands-on-contianer">
+        <div class="hands-on-container">
 
         </div>
         <div class="activity-container">
 
         </div>
     </div>
-
+    
     <div class="2pics-1word-container">
 
     </div>
+  
+    <div id="initial-entrance">
+        <button onclick="enter('lecture-container')">Enter Lecture</button>
+        <button onclick="enter('hands-on-container')">Enter Hands-on</button>
+        <button onclick="enter('activity-container')">Enter Activity</button>
+        <button onclick="twoPicsOneWord('2pics-1word-container')">Start 2 Pics 1 Word Game</button>
+    </div>
+    
 
     <script src="../JS/scholarsQuestSciChem.js"></script>
+    <script src="../../BACKEND/PHASES/SciChemBattle.js"></script>
 </body>
 </html>

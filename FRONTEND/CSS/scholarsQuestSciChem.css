@@ -1,20 +1,108 @@
 * {
     scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
-html {
+html, body {
     overflow-x: hidden;
-}
-
-body {
-    padding: 0;
     margin: 0;
-    overflow-x: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    color: #fff;
+    font-family: "MedievalSharp", cursive;
+    font-weight: 400;
+    background-color: #424242;
 }
 
 a {
     text-decoration: none;
+}
+
+/* Background */
+.background {
+    background-image: url("../RESOURCES/HIST/BACKGROUNDS/hist.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+/* Academy Wrapper */
+.academy-wrapper {
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Initial Entrance */
+#initial-entrance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+}
+
+/* Button styling */
+#initial-entrance button {
+    width: 100px;
+    height: 100px;
+    border: none;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    margin: 10px;
+    z-index: 100;
+}
+
+/* Container Styles */
+.lecture-container,
+.hands-on-container,
+.activity-container,
+.twoPics-oneWord-container {
+    top: 0;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    height: 100vh;
+    transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
+    position: relative;
+}
+
+.lecture-container {
+    background-color: #424242;
+    z-index: 200;
+}
+
+.hands-on-container {
+    background-color: #424242;
+    z-index: 300;
+}
+
+.activity-container {
+    background-color: #424242;
+    z-index: 400;
+}
+
+.twoPics-oneWord-container {
+    background-color: #424242;
+    z-index: 500;
+}
+
+/* Active state for showing containers */
+.active {
+    display: block;
+    visibility: visible;
+    opacity: 1;
 }
