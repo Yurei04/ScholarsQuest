@@ -6,7 +6,10 @@
     <title>History - Literture Academy</title>
     <link rel="stylesheet" href="../CSS/navigation.css">
     <link rel="stylesheet" href="../CSS/scholarsQuestHistLit.css">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    </head>
 <body>
 
     
@@ -50,7 +53,11 @@
     </header>
 
     <div class="academy-wrapper">
-
+        <div class="initial-entrance">
+            <button title="entrance" onclick="enter(lecture)">lecture</button>
+            <button title="entrance" onclick="enter(hands-on)">hands-on</button>
+            <button title="entrance" onclick="enter(activity)">activity</button>
+        </div>
         <div class="lecture-container">
 
         </div>
@@ -82,6 +89,8 @@
             </div>
         </div>
     </div>
+
+    <div class="background"></div>
 
     <script src="../JS/scholarsQuestHistLit.js"></script>
     <script src="../../BACKEND/PHASES/HistLitBattle.js"></script>
