@@ -9,10 +9,16 @@ html {
 body {
     padding: 0;
     margin: 0;
+    height: 100vh;
+    width: 100%;
     overflow-x: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url("../RESOURCES/GLOBAL/map.PNG");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 a {
