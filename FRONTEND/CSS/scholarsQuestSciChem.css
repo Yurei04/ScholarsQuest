@@ -1,6 +1,7 @@
 * {
     scroll-behavior: smooth;
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 html, body {
@@ -17,6 +18,75 @@ html, body {
 
 a {
     text-decoration: none;
+}
+
+.wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding: 2%;
+    background-color: #424242;
+    height: 500px;
+}
+
+.wrapper h1 {
+    color: #ecf0f1;
+}
+
+.wrapper h1 + p {
+    margin-bottom: 5%;
+    color: #3498db;
+}
+
+.scoreWrap {
+    float: left;
+}
+.timeWrap {
+    float: right;
+}
+
+.outerWrap:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.bg {
+    background-color: #04AF71;
+}
+
+.wrapper button {
+    border: none;
+    background-color: #FF7373;
+    box-shadow: 0px 5px 0px 0px #CE4646;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 22px;
+    margin: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.wrapper button:active {
+    transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.scoreWrap p, .scoreWrap span, .timeWrap p, .timeWrap span {
+    font-size: 30px;
+    color: #FF7373;
+}
+
+.wordsWrap {
+    margin-top: 50px;
+}
+
+.words span {
+    font-size: 60px;
+    letter-spacing: 1px;
+    color: #ECF0F1;
 }
 
 /* Background */
@@ -44,17 +114,17 @@ a {
     align-items: center;
 }
 
-/* Initial Entrance */
-#initial-entrance {
+/* Initial Entrance Buttons */
+.initial-entrance {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    z-index: 100;
+    z-index: 10; /* Initially in front */
 }
 
-/* Button styling */
-#initial-entrance button {
+.initial-entrance button {
     width: 100px;
     height: 100px;
     border: none;
@@ -62,7 +132,19 @@ a {
     background-position: center;
     cursor: pointer;
     margin: 10px;
-    z-index: 100;
+}
+
+/* Button images */
+.btn-lecture {
+    background-image: url('path/to/lecture-button.jpg');
+}
+
+.btn-hands-on {
+    background-image: url('path/to/hands-on-button.jpg');
+}
+
+.btn-activity {
+    background-image: url('path/to/activity-button.jpg');
 }
 
 /* Container Styles */
@@ -71,38 +153,52 @@ a {
 .activity-container,
 .twoPics-oneWord-container {
     top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
     display: none;
     visibility: hidden;
     opacity: 0;
-    width: 100%;
-    height: 100vh;
     transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
-    position: relative;
 }
 
-.lecture-container {
-    background-color: #424242;
-    z-index: 200;
-}
-
-.hands-on-container {
-    background-color: #424242;
-    z-index: 300;
-}
-
+.lecture-container,
+.hands-on-container,
 .activity-container {
+    z-index: 100; 
     background-color: #424242;
-    z-index: 400;
 }
 
 .twoPics-oneWord-container {
+    z-index: 200; 
     background-color: #424242;
-    z-index: 500;
+    width: 100vw;
+    height: 100vh;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
 }
 
-/* Active state for showing containers */
+
+.spells {
+    display: none; 
+}
+
+
 .active {
     display: block;
     visibility: visible;
     opacity: 1;
+}
+
+
+.img-container {
+    border: 2px solid #fff;
+    width: 500px;
+    height: 500px;
 }

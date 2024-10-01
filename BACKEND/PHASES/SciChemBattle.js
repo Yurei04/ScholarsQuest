@@ -2,6 +2,10 @@ import { enemyHP, reduceEnemyHp } from "./";
 
 let words = ["NATURE", "DISEASE", "OXYGEN", "CLIMATE"];
 
+var temp = document.querySelector('.time');
+var button = document.querySelector("#starting");
+var timerDiv = document.querySelector(".time");
+var scoreDiv = document.querySelector(".score");
 let guesses = 0;
 let guessLimit = 0;
 let questionsAnswered = 0;
@@ -9,9 +13,6 @@ let correctGuesses = 0;
 let currentSpell;
 let randomWord;
 let countDownTimer;
-let timerDisplay = document.querySelector('.time');
-let button = document.querySelector("button");
-let gameTimer = new Timer(60, updateTimerUI, gameOver);
 
 let spells = {
     "simple": {
@@ -31,61 +32,45 @@ let spells = {
     }
 }
 
-class Timer {
-    constructor(seconds, onTick, onComplete) {
-        this.seconds = seconds;
-        this.initialSeconds = seconds;
-        this.onTick = onTick; 
-        this.onComplete = onComplete; 
-        this.interval = null;
-    }
+function countdown() {
+    points = 0;
+    var timer = setInterval(function(){
+      button.disabled = true;
+      seconds--;
+      temp.innerHTML = seconds;
+      if (seconds === 0) {
+        alert("Game over! Your total damage dealt is " + points);
+        scoreDiv.innerHTML = "0";
+        words.innerHTML = "";
+        button.disabled = false;
+        clearInterval(timer);
+        seconds = 60;
+        timerDiv.innerHTML = "60";
+        button.disabled = false;	
+      }
+    }, 1000);
+  }
 
-    start() {
-        this.interval = setInterval(() => {
-        this.seconds--;
-        this.onTick(this.seconds);
-
-        if (this.seconds <= 0) {
-            this.stop();
-            this.onComplete();
-        }
-        }, 1000);
-    }
-
-    stop() {
-        clearInterval(this.interval);
-        this.seconds = this.initialSeconds;
-    }
-
-    reset() {
-        this.stop();
-        this.seconds = this.initialSeconds;
-    }
+function showOptions() {
+    document.querySelector(".spells").style.display = 'flex';
 }
-
-const updateTimerUI = (secondsLeft) => {
-    timerDisplay.innerHTML = secondsLeft;
-};
-
-const gameOver = () => {
-    alert("Game over! Your total score is " + points);
-    button.disabled = false;
-};
-
-button.addEventListener("click", function(e) {
-    selectSpell(spell);
-    gameTimer.start(); 
-  });
-
+  
 function selectSpell(spell) {
     let spellType = spell.id;
     currentSpell = spells[spellType]; 
     guessLimit = currentSpell.maxGuesses;
     questionsAnswered = 0;
     correctGuesses = 0;
+    document.querySelector(".spells").style.display = 'none';
     wordBoxMaker(generateWord());
     imgShow();
 }
+
+button.addEventListener("click", function(e){
+    countdown();
+    showOptions()
+    button.disabled = true;
+  });
 
 async function spellComplexityFunction() {
     if (questionsAnswered === currentSpell.questions) { 
