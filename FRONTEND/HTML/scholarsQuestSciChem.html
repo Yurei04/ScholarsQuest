@@ -53,65 +53,84 @@
         </nav>
     </header>
 
-    <div class="academy-wrapper">
+    <div class="outer-border">
+        <div class="mid-border">
+           <div class="inner-border">
+             <img class="vertical-decoration top" src="https://i.ibb.co/JRTK9z4/horizontally-centered-vertical-decoration.png"></img>
+             <img class="vertical-decoration bottom" src="https://i.ibb.co/JRTK9z4/horizontally-centered-vertical-decoration.png"></img>
 
-        <div id="initial-entrance">
-            <button class="btn-lecture" onclick="enter('lecture-container')">Enter Lecture</button>
-            <button class="btn-hands-on" onclick="enter('hands-on-container')">Enter Hands-on</button>
-            <button class="btn-activity" onclick="enter('activity-container')">Enter Activity</button>
+              <!-- Page Content -->
+              <div class="container">
+                 <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="academy-wrapper">
+                            <h1> Science - Chemistry Academy</h1>
+                            <div id="initial-entrance">
+                                <button class="btn-lecture" onclick="enter('lecture-container')"> Lecture Hall </button>
+                                <button class="btn-hands-on" onclick="enter('hands-on-container')"> Hands On Hall </button>
+                                <button class="btn-activity" onclick="enter('activity-container')"> Training Area </button>
+                            </div>
+                    
+                            <div id="lecture-container" class="lecture-container">
+                                <h2>Lecture Content</h2>
+                                <p>This is where the lecture content goes.</p>
+                                <button class="return" title="return" onclick="goBack()"></button>
+                            </div>
+                        
+                            <div id="hands-on-container" class="hands-on-container">
+                                <h2>Hands-on Content</h2>
+                                <p>This is where the hands-on content goes.</p>
+                                <button class="return" title="return" onclick="goBack()"></button>
+                            </div>
+                        
+                            <div id="activity-container" class="activity-container">
+                                <h2>Activity Content</h2>
+                                <p>This is where the activity content goes.</p>
+                                <button onclick="twoPicsOneWord('twoPics-oneWord-container')">Start 2 Pics 1 Word Game</button>
+                                <button class="return" title="return" onclick="goBack()"></button>
+                            </div>
+                        </div>
+                        
+                        <div id="twoPics-oneWord-container" class="twoPics-oneWord-container">
+                            <div class="wrapper">
+                                <h1>2 Pics One Word</h1>
+                                <p>Guess Pictures</p>
+                                <button class="return" title="return" onclick="goBack()">Go Back</button>
+                                <button id="starting" onclick="showSpells(spells)">START</button>
+                                <div class="outerWrap">
+                                    <div class="scoreWrap">
+                                        <p>Score</p>
+                                        <span class="score">0</span>
+                                    </div>
+                                    <div class="timeWrap">
+                                        <p>Time left</p>
+                                        <span class="time">60</span>
+                                    </div>
+                                </div>
+                                <div class="spells">
+                                    <button class="return" title="return" onclick="goBack()">Go Back</button>
+                                    <button class="spell" onclick="selectSpell('simple')" id="simple">Simple</button>
+                                    <button class="spell" onclick="selectSpell('intermediate')" id="intermediate">Intermediate</button>
+                                    <button class="spell" onclick="selectSpell('complex')" id="complex">Complex</button>
+                                </div>
+                                <div class="img-container" id="img-container1"></div>
+                                <div class="img-container" id="img-container2"></div>
+                        
+                                <div class="boxes" id="boxes"></div>
+                                <button title="checking" id="checking" onclick="checking()"></button>
+                            </div>
+                            
+                        </div>
+                        <div class="background"></div>
+                    </div>
+                 </div>
+              </div>
+           </div>
         </div>
+     </div>
 
-        <div id="lecture-container" class="lecture-container">
-            <h2>Lecture Content</h2>
-            <p>This is where the lecture content goes.</p>
-            <button class="return" title="return" onclick="goBack()"></button>
-        </div>
+
     
-        <div id="hands-on-container" class="hands-on-container">
-            <h2>Hands-on Content</h2>
-            <p>This is where the hands-on content goes.</p>
-            <button class="return" title="return" onclick="goBack()"></button>
-        </div>
-    
-        <div id="activity-container" class="activity-container">
-            <h2>Activity Content</h2>
-            <p>This is where the activity content goes.</p>
-            <button onclick="twoPicsOneWord('twoPics-oneWord-container')">Start 2 Pics 1 Word Game</button>
-            <button class="return" title="return" onclick="goBack()"></button>
-        </div>
-    </div>
-    
-    <div id="twoPics-oneWord-container" class="twoPics-oneWord-container">
-        <div class="wrapper">
-            <h1>2 Pics One Word</h1>
-            <p>Guess Pictures</p>
-            <button class="return" title="return" onclick="goBack()">Go Back</button>
-            <button id="starting" onclick="showSpells(spells)">START</button>
-            <div class="outerWrap">
-                <div class="scoreWrap">
-                    <p>Score</p>
-                    <span class="score">0</span>
-                </div>
-                <div class="timeWrap">
-                    <p>Time left</p>
-                    <span class="time">60</span>
-                </div>
-            </div>
-            <div class="spells">
-                <button class="return" title="return" onclick="goBack()">Go Back</button>
-                <button class="spell" onclick="selectSpell('simple')" id="simple">Simple</button>
-                <button class="spell" onclick="selectSpell('intermediate')" id="intermediate">Intermediate</button>
-                <button class="spell" onclick="selectSpell('complex')" id="complex">Complex</button>
-            </div>
-            <div class="img-container" id="img-container1"></div>
-            <div class="img-container" id="img-container2"></div>
-    
-            <div class="boxes" id="boxes"></div>
-            <button title="checking" id="checking" onclick="checking()"></button>
-        </div>
-        
-    </div>
-    <div class="background"></div>
 
     
 

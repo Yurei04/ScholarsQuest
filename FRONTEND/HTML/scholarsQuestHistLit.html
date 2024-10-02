@@ -52,56 +52,76 @@
         </nav>
     </header>
 
-    <div class="academy-wrapper">
-        <div class="initial-entrance">
-            <button class="btn-lecture" title="entrance" onclick="enter('lecture-container')"></button>
-            <button class="btn-hands-on" title="entrance" onclick="enter('hands-on-container')"></button>
-            <button class="btn-activity" title="entrance" onclick="enter('activity-container')"></button>
-        </div>
-    
-        <div id="lecture-container" class="lecture-container">
-            <h2>Lecture Content</h2>
-            <p>This is where the lecture content goes.</p>
-            <button class="return" title="return" onclick="goBack()"></button>
-        </div>
-    
-        <div id="hands-on-container" class="hands-on-container">
-            <h2>Hands-on Content</h2>
-            <p>This is where the hands-on content goes.</p>
-            <button class="return" title="return" onclick="goBack()"></button>
-        </div>
-    
-        <div id="activity-container" class="activity-container">
-            <h2>Activity Content</h2>
-            <p>This is where the activity content goes.</p>
-            <button class="training" title="activity" onclick="typingGame('typing-game-container')">Open Game</button>
-            <button class="return" title="return" onclick="goBack()"></button>
-        </div>
-    </div>
+    <div class="outer-border">
+        <div class="mid-border">
+           <div class="inner-border">
+             <img class="vertical-decoration top" src="https://i.ibb.co/JRTK9z4/horizontally-centered-vertical-decoration.png"></img>
+             <img class="vertical-decoration bottom" src="https://i.ibb.co/JRTK9z4/horizontally-centered-vertical-decoration.png"></img>
 
-    <div class="typing-game-container" id="typing-game-container">
-        <div class="wrapper">
-            <h1>Typing game by Nikola Simovic</h1>
-            <p>Type as many words as you can until time runs out!</p>
-            <button class="return" title="return" onclick="goBack()"></button>
-            <button>START</button>
-            <div class="outerWrap">
-                <div class="scoreWrap">
-                    <p>Score</p>
-                    <span class="score">0</span>
-                </div>
-                <div class="timeWrap">
-                    <p>Time left</p>
-                    <span class="time">60</span>
-                </div>
-            </div>
-            <div class="wordsWrap">
-                <p class="words"></p>
-            </div>
-        </div>
-    </div>
+              <!-- Page Content -->
+              <div class="container">
+                 <div class="row">
+                    <div class="col-lg-12 text-center">
 
-    <div class="background"></div>
+                        <div class="academy-wrapper">
+                            <h1> History - Literature Academy </h1>
+                            <div class="initial-entrance">
+                                <button class="btn-lecture" title="entrance" onclick="enter('lecture-container')"> Lecture Hall </button>
+                                <button class="btn-hands-on" title="entrance" onclick="enter('hands-on-container')"> Hands On Hall </button>
+                                <button class="btn-activity" title="entrance" onclick="enter('activity-container')"> Training Area </button>
+                            </div>
+                        
+                            <div id="lecture-container" class="lecture-container">
+                                <h2>Lecture Content</h2>
+                                <p>This is where the lecture content goes.</p>
+                                <button class="return" title="return" onclick="goBack()"></button>
+                            </div>
+                        
+                            <div id="hands-on-container" class="hands-on-container">
+                                <h2>Hands-on Content</h2>
+                                <p>This is where the hands-on content goes.</p>
+                                <button class="return" title="return" onclick="goBack()"></button>
+                            </div>
+                        
+                            <div id="activity-container" class="activity-container">
+                                <h2>Activity Content</h2>
+                                <p>This is where the activity content goes.</p>
+                                <button class="training" title="activity" onclick="typingGame('typing-game-container')">Open Game</button>
+                                <button class="return" title="return" onclick="goBack()"></button>
+                            </div>
+                        </div>
+                    
+                        <div class="typing-game-container" id="typing-game-container">
+                            <div class="wrapper">
+                                <h1>Typing game by Nikola Simovic</h1>
+                                <p>Type as many words as you can until time runs out!</p>
+                                <button class="return" title="return" onclick="goBack()"></button>
+                                <button>START</button>
+                                <div class="outerWrap">
+                                    <div class="scoreWrap">
+                                        <p>Score</p>
+                                        <span class="score">0</span>
+                                    </div>
+                                    <div class="timeWrap">
+                                        <p>Time left</p>
+                                        <span class="time">60</span>
+                                    </div>
+                                </div>
+                                <div class="wordsWrap">
+                                    <p class="words"></p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="background"></div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+
+
 
     <script src="../JS/scholarsQuestHistLit.js"></script>
     <script type="module" src="../../BACKEND/PHASES/HistLitBattle.js" onerror="handleScriptLoadError()"></script>

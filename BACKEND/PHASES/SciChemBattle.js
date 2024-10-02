@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 console.log("DOM fully loaded and parsed");
-import { enemyHP, reduceEnemyHp } from "./";
 
 let words = ["NATURE", "DISEASE", "OXYGEN", "CLIMATE"];
 

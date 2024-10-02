@@ -6,6 +6,10 @@
     <title>The Library</title>
     <link rel="stylesheet" href="../CSS/navigation.css">
     <link rel="stylesheet" href="../CSS/library.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    
 </head>
 <body>
 
@@ -50,19 +54,11 @@
     </header>
 
     <div class="library-wrapper">
+        <h1> The World Library </h1>
         <div class="library-entrance">
-            <div class="hist-entrance">
-                <button onclick="chooseEntrance('hist')" value="hist" title="#"><img src="" alt=""></button>
-            </div>
-            <div class="sci-entrance">
-                <button onclick="chooseEntrance('sci')" value="sci" title="#"><img src="" alt=""></button>
-            </div>
-            <div class="tech-entrance">
-                <button onclick="chooseEntrance('tech')" value="tech" title="#"><img src="" alt=""></button>
-            </div>
-            <div class="librarian">
-
-            </div>
+                <button class="hist-entrance" onclick="chooseEntrance('hist')" value="hist" title="#"> History Section </button>
+                <button class="sci-entrance" onclick="chooseEntrance('sci')" value="sci" title="#"> Science Section </button>
+                <button class="tech-entrance" onclick="chooseEntrance('math')" value="tech" title="#"> Technology Entrance </button>
         </div>
 
 
@@ -77,15 +73,28 @@
                     <div class="side cover"> </div>
                 </div>
                 <div class="book">
+                    <div class="book">
+                        <div class="side spine ">
+                          <span class="spine-title"> Dune</span>
+                          <span class="spine-author"> Frank Herbert </span>
+                        </div>
+                        <div class="side top"></div>
+                        <div class="side cover"> </div>
+                    </div>
+                </div>
+                <div class="book">
                     <div class="side spine ">
                       <span class="spine-title"> Dune</span>
                       <span class="spine-author"> Frank Herbert </span>
                     </div>
                     <div class="side top"></div>
                     <div class="side cover"> </div>
+
                 </div>
             </div>
-        </div>
+            <button class="go-back" onclick="goBack()">Go Back</button>
+    </div>
+
 
     
         <div class="math-section">
@@ -99,6 +108,17 @@
                     <div class="side cover"> </div>
                 </div>
                 <div class="book">
+                    <div class="book">
+                        <div class="side spine ">
+                          <span class="spine-title"> Dune</span>
+                          <span class="spine-author"> Frank Herbert </span>
+                        </div>
+                        <div class="side top"></div>
+                        <div class="side cover"> </div>
+                    </div>
+                </div>
+    
+                <div class="book">
                     <div class="side spine ">
                       <span class="spine-title"> Dune</span>
                       <span class="spine-author"> Frank Herbert </span>
@@ -106,8 +126,12 @@
                     <div class="side top"></div>
                     <div class="side cover"> </div>
                 </div>
+                
             </div>
+            <button class="go-back" onclick="goBack()">Go Back</button>
         </div>
+
+
 
         <div class="sci-section">
             <div class="bookshelf" id="sci">
@@ -120,18 +144,30 @@
                     <div class="side cover"> </div>
                 </div>
                 <div class="book">
-                    <div class="side spine ">
-                      <span class="spine-title"> Dune</span>
-                      <span class="spine-author"> Frank Herbert </span>
+                    <div class="book">
+                        <div class="side spine ">
+                          <span class="spine-title"> Dune</span>
+                          <span class="spine-author"> Frank Herbert </span>
+                        </div>
+                        <div class="side top"></div>
+                        <div class="side cover"> </div>
                     </div>
-                    <div class="side top"></div>
-                    <div class="side cover"> </div>
                 </div>
-            </div>
+                <div class="book">
+                    <div class="book">
+                        <div class="side spine ">
+                          <span class="spine-title"> Dune</span>
+                          <span class="spine-author"> Frank Herbert </span>
+                        </div>
+                        <div class="side top"></div>
+                        <div class="side cover"> </div>
+                    </div>
+                </div>
         </div>
-
+        <button class="go-back" onclick="goBack()">Go Back</button>
+        </div>
     </div>
-
+    <div class="background"></div>
     <script src="../JS/library.js"></script>
 </body>
 </html>
