@@ -75,6 +75,23 @@ a {
 	left: -22rem;
 }
 
+.library,
+.adventurers-guild,
+.sci-academy,
+.hist-academy,
+.tech-academy {
+    transition: transform 0.3s ease;
+}
+
+.library:hover,
+.adventurers-guild:hover,
+.sci-academy:hover,
+.hist-academy:hover,
+.tech-academy:hover {
+    transform: scale(1.2); /* Increases the element size by 10% */
+}
+
+
 :root {
 	--skintone-color: #DE9B72;
 	--dark-color: #3A3D3E;

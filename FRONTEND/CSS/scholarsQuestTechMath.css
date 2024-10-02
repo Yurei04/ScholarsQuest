@@ -307,6 +307,7 @@ a:hover {
 #lecture-container p {
     background-color: #1950748d;
     border: 1px solid #fff;
+    border-radius: 8px;
     padding: 20px;
     margin: 30px;
 }
