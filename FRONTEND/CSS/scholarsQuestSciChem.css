@@ -121,7 +121,7 @@ a {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    z-index: 10; /* Initially in front */
+    z-index: 10; 
 }
 
 .initial-entrance button {
@@ -151,16 +151,18 @@ a {
 .lecture-container,
 .hands-on-container,
 .activity-container,
-.twoPics-oneWord-container {
+.twoPics-oneWord-container,
+.spells {
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     display: none;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
+    z-index: 100; 
 }
 
 .lecture-container,
@@ -171,22 +173,13 @@ a {
 }
 
 .twoPics-oneWord-container {
-    z-index: 200; 
+    z-index: 300; 
     background-color: #424242;
-    width: 100vw;
-    height: 100vh;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
 }
 
-
 .spells {
-    display: none; 
+    z-index: 400; 
+    background-color: #424242;
 }
 
 

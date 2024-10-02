@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Science - Chemistry Academy</title>
-
+    <link rel="stylesheet" href="../CSS/navigation.css">
     <link rel="stylesheet" href="../CSS/scholarsQuestSciChem.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,12 +81,12 @@
         </div>
     </div>
     
-    <div class="twoPics-oneWord-container">
+    <div id="twoPics-oneWord-container" class="twoPics-oneWord-container">
         <div class="wrapper">
             <h1>2 Pics One Word</h1>
             <p>Guess Pictures</p>
             <button class="return" title="return" onclick="goBack()">Go Back</button>
-            <button id="starting" onclick="showSpells()">START</button>
+            <button id="starting" onclick="showSpells(spells)">START</button>
             <div class="outerWrap">
                 <div class="scoreWrap">
                     <p>Score</p>
@@ -98,17 +98,16 @@
                 </div>
             </div>
             <div class="spells">
-                <button class="spell" onclick="selectSpell('simple')">Simple</button>
-                <button class="spell" onclick="selectSpell('intermediate')">Intermediate</button>
-                <button class="spell" onclick="selectSpell('complex')">Complex</button>
+                <button class="return" title="return" onclick="goBack()">Go Back</button>
+                <button class="spell" onclick="selectSpell('simple')" id="simple">Simple</button>
+                <button class="spell" onclick="selectSpell('intermediate')" id="intermediate">Intermediate</button>
+                <button class="spell" onclick="selectSpell('complex')" id="complex">Complex</button>
             </div>
             <div class="img-container" id="img-container1"></div>
             <div class="img-container" id="img-container2"></div>
     
             <div class="boxes" id="boxes"></div>
             <button title="checking" id="checking" onclick="checking()"></button>
-
-
         </div>
         
     </div>
@@ -117,6 +116,12 @@
     
 
     <script src="../JS/scholarsQuestSciChem.js"></script>
-    <script src="../../BACKEND/PHASES/SciChemBattle.js"></script>
+    <script type="module" src="../../BACKEND/PHASES/SciChemBattle.js" onerror="handleScriptLoadError()"></script>
+    <script>
+        function handleScriptLoadError() {
+            alert("Sorry for the inconvenience, but the required feature could not be activated due to restrictions or a failed script load.");
+        }
+    </script>
+
 </body>
 </html>

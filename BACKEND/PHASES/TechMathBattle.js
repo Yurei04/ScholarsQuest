@@ -125,11 +125,16 @@ function checkingProblem() {
     }
 }
 
-document.getElementById("techChecker").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        checkingProblem();
-    }
+document.getElementById("techChecker").addEventListener("click", function(e) {
+    let selectedRune = document.getElementById("runeSelect").value;
+    selectSorcery(selectedRune);
+    mathProblemTimer.start();
 });
+
+document.getElementById("checkAnswer").addEventListener("click", function(e) {
+    checkingProblem();
+});
+
 
 
 async function runeComplexityFunction() {
@@ -174,3 +179,5 @@ function clearing() {
     tries = 0;
     clearInterval(mathProblemTimer);  
 }
+
+

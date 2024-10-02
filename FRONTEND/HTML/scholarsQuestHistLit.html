@@ -104,6 +104,11 @@
     <div class="background"></div>
 
     <script src="../JS/scholarsQuestHistLit.js"></script>
-    <script src="../../BACKEND/PHASES/HistLitBattle.js"></script>
+    <script type="module" src="../../BACKEND/PHASES/HistLitBattle.js" onerror="handleScriptLoadError()"></script>
+    <script>
+        function handleScriptLoadError() {
+            alert("Sorry for the inconvenience, but the required feature could not be activated due to restrictions or a failed script load.");
+        }
+    </script>
 </body>
 </html>
