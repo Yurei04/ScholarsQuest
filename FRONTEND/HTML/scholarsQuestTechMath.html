@@ -71,28 +71,67 @@
                                 <button class="btn-hands-on" onclick="enter('hands-on-container')">Enter Hands-on</button>
                                 <button class="btn-activity" onclick="enter('activity-container')">Enter Activity</button>
                             </div>
-                    
+                        
                             <div id="lecture-container" class="lecture-container">
                                 <h2>Lecture Content</h2>
-                                <p>This is where the lecture content goes.</p>
-                                <button class="return" title="return" onclick="goBack()"></button>
+                                <p>This section provides rich knowledge about the fields of science and chemistry. Understanding the basics of chemistry, 
+                                    such as the atomic structure, chemical reactions, and the periodic table, is essential for anyone pursuing science.
+                                     Chemistry impacts our daily lives through the development of pharmaceuticals, new materials, and energy solutions. 
+                                     For more in-depth learning, explore various sources such as <a href="https://www.sciencedaily.com/news/matter_energy/chemistry/">
+                                        Science Daily's Chemistry Section</a> and <a href="https://www.khanacademy.org/science/chemistry">
+                                            Khan Academy's Chemistry Courses</a></p>
+                                
+                                
+                                <button class="return" title="return" onclick="goBack()">Go Back</button>
                             </div>
                         
                             <div id="hands-on-container" class="hands-on-container">
                                 <h2>Hands-on Content</h2>
                                 <p>This is where the hands-on content goes.</p>
-                                <button class="return" title="return" onclick="goBack()"></button>
+                        
+                                <!-- Quests -->
+                                <div class="quest-container">
+                                    <div class="quest-box">
+                                        <h3>Quest 1</h3>
+                                        <p>Guess 5 words from the training hall and gain 50 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 2</h3>
+                                        <p>Solve 3 math problems to gain 100 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 3</h3>
+                                        <p>Identify 4 elements from the periodic table to gain 75 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 4</h3>
+                                        <p>Complete the science quiz to gain 120 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 5</h3>
+                                        <p>Match the chemical reactions and gain 90 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 6</h3>
+                                        <p>Find the solution to the physics puzzle and gain 110 EXP.</p>
+                                    </div>
+                                </div>
+                        
+                                <button class="return" title="return" onclick="goBack()">Go Back</button>
                             </div>
                         
+                            <!-- Training Hall (Activity Container) -->
                             <div id="activity-container" class="activity-container">
-                                <h2>Activity Content</h2>
-                                <p>This is where the activity content goes.</p>
-                                <button onclick="twoPicsOneWord('twoPics-oneWord-container')">Start 2 Pics 1 Word Game</button>
-                                <button class="return" title="return" onclick="goBack()"></button>
+                                <h2>Training Hall</h2>
+                                <p>Welcome to the Training Hall! This area features interactive tutorials, practice problems, and more to help you improve your knowledge in math, science, and technology.</p>
+                                <button id="game-prob" onclick="problemSolving('problem-solving-container')">Problem Solving Game</button>
+
+                                <button class="return top-left" title="return" onclick="goBack()">Go Back</button>
                             </div>
                         </div>
+                        
                     
-                            <div class="problem-solving-container">
+                            <div class="problem-solving-container" id="problem-solving-container">
                                 <div class="wrapper">
                                     <h2>Problem Solving Game</h2>
                                     <select id="runeSelect">
@@ -101,6 +140,7 @@
                                         <option value="complex">Complex</option>
                                     </select>
                                     <button id="techChecker" title="Submit" class="submit-math">Start Game</button>
+                                    <button class="return top-left" title="return" onclick="goBack()">Go Back</button>
                         
                                     <div id="problem-container"></div>
                                     <input type="text" id="answer" placeholder="Enter your answer" />
@@ -131,7 +171,7 @@
     
 
     <script src="../JS/scholarsQuestTechMath.js"></script>
-    <script type="module" src="../../BACKEND/PHASES/TechMathBattle.js" onerror="handleScriptLoadError()"></script>
+    <script src="../../BACKEND/PHASES/TechMathBattle.js" onerror="handleScriptLoadError()"></script>
     <script>
         function handleScriptLoadError() {
             alert("Sorry for the inconvenience, but the required feature could not be activated due to restrictions or a failed script load.");

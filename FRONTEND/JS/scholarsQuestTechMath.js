@@ -26,16 +26,16 @@ function goBack() {
     document.getElementById('initial-entrance').style.display = 'flex';
 }
 
-function twoPicsOneWord(containerId) {
+function problemSolving(containerId) {
     console.log("Activating problem-solving-container for container: ", containerId); 
 
     document.querySelectorAll('.lecture-container, .hands-on-container, .activity-container').forEach(container => {
         container.classList.remove('active');
     });
 
-    let twoPicsContainer = document.getElementById(containerId);
-    if (twoPicsContainer) {
-        twoPicsContainer.classList.add('active');
+    let problemSolving = document.getElementById(containerId);
+    if (problemSolving) {
+        problemSolving.classList.add('active');
         console.log("problem-solving-container is now active"); 
     } else {
         console.error("problem-solving-container not found: ", containerId); 

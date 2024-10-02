@@ -42,7 +42,7 @@ class Timer {
       this.seconds = seconds;
       this.initialSeconds = seconds;
       this.onTick = onTick; 
-      this.onComplete = onComplete; // Callback when timer reaches 0
+      this.onComplete = onComplete;
       this.interval = null;
     }
   
@@ -181,3 +181,6 @@ function clearing() {
 }
 
 
+function handleScriptLoadError() {
+    alert("Sorry for the inconvenience, but the required feature could not be activated due to restrictions or a failed script load.");
+}

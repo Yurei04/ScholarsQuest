@@ -13,7 +13,7 @@ html, body {
     color: #fff;
     font-family: "MedievalSharp", cursive;
     font-weight: 400;
-    background-color: #424242;
+    background-color: #2c2c54; /* Dark bluish violet background */
 }
 
 a {
@@ -21,22 +21,25 @@ a {
 }
 
 .wrapper {
+
     max-width: 600px;
-    margin: 0 auto;
+    margin: 100px auto;
     width: 100%;
     text-align: center;
     padding: 2%;
-    background-color: #424242;
+    background-color: #2d3fb69c; 
+    border: 1px solid white;
     height: 500px;
 }
 
 .wrapper h1 {
-    color: #ecf0f1;
+    color: #dcdde1;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8); /* Glow effect */
 }
 
 .wrapper h1 + p {
     margin-bottom: 5%;
-    color: #3498db;
+    color: #8c7ae6; /* Violet text */
 }
 
 .scoreWrap {
@@ -53,20 +56,27 @@ a {
 }
 
 .bg {
-    background-color: #04AF71;
+    background-color: #4834d4; /* Bluish violet */
 }
 
 .wrapper button {
     border: none;
-    background-color: #FF7373;
-    box-shadow: 0px 5px 0px 0px #CE4646;
+    background-color: #7158e2; /* Violet */
+    box-shadow: 0px 5px 10px rgba(137, 196, 244, 0.8); /* Bluish glow */
     outline: none;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px 15px;
     font-size: 22px;
     margin: 20px;
     color: #fff;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wrapper button:hover {
+    background-color: #9980FA; /* Lighter violet on hover */
+    box-shadow: 0px 5px 20px rgba(137, 196, 244, 1); /* Intense glow on hover */
+    transform: scale(1.05); /* Slight scaling effect */
 }
 
 .wrapper button:active {
@@ -76,7 +86,7 @@ a {
 
 .scoreWrap p, .scoreWrap span, .timeWrap p, .timeWrap span {
     font-size: 30px;
-    color: #FF7373;
+    color: #ff7979; /* Soft reddish accent */
 }
 
 .wordsWrap {
@@ -86,7 +96,7 @@ a {
 .words span {
     font-size: 60px;
     letter-spacing: 1px;
-    color: #ECF0F1;
+    color: #dcdde1; /* Light text */
 }
 
 /* Background */
@@ -115,7 +125,7 @@ a {
 }
 
 .academy-wrapper h1 {
-    text-shadow: rgba(219, 224, 255, 0.9) 0px 0px 18px;
+    text-shadow: rgba(163, 175, 255, 0.9) 0px 0px 18px; /* Blue glow */
 }
 
 /* Initial Entrance Buttons */
@@ -124,7 +134,7 @@ a {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    z-index: 10; 
+    z-index: 10;
 }
 
 #initial-entrance button {
@@ -141,8 +151,13 @@ a {
     color: #fff;
     font-family: "MedievalSharp", cursive;
     font-weight: 400;
-    text-shadow: rgba(163,175,255,0.9) 0px 0px 18px;
-    
+    text-shadow: rgba(163, 175, 255, 0.9) 0px 0px 18px;
+    transition: all 0.3s ease;
+}
+
+#initial-entrance button:hover {
+    transform: scale(1.05); /* Hover scaling */
+    box-shadow: 0 0 15px #8c7ae6; /* Violet glow */
 }
 
 /* Button images */
@@ -162,8 +177,7 @@ a {
 .lecture-container,
 .hands-on-container,
 .activity-container,
-.problem-solving-container
- {
+.problem-solving-container {
     top: 0;
     left: 0;
     width: 100vw;
@@ -173,22 +187,32 @@ a {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
-    z-index: 100; 
+    z-index: 100;
 }
 
 .lecture-container,
 .hands-on-container,
 .activity-container {
-    z-index: 100; 
-    background-color: #424242;
+    z-index: 100;
+    background-image: url("../RESOURCES/TECH/BACKGROUNDS/tech.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 .problem-solving-container {
-    z-index: 300; 
-    background-color: #424242;
+    z-index: 300;
+    background-image: url("../RESOURCES/TECH/BACKGROUNDS/tech.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
-
+#lecture-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .active {
     display: block;
@@ -196,7 +220,187 @@ a {
     opacity: 1;
 }
 
+/* Return Button */
+.return {
+    background-color: #c0392b;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
+.return:hover {
+    background-color: #e74c3c; /* Lighter red on hover */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); /* Red glow */
+}
+
+.return.top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Quest Boxes */
+.quest-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.hands-on-container {
+    text-align: center;
+}
+
+.hands-on-container h2 {
+    margin-top: 50px;
+}
+
+.quest-box {
+    background-color: #1e406d9a; /* Violet */
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+    border: 1px solid #fff;
+    box-shadow: 0 0 10px rgba(137, 196, 244, 0.5); /* Blue glow */
+    transition: all 0.3s ease;
+    margin: 20px;
+}
+
+.quest-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(137, 196, 244, 0.8); /* Intense blue glow */
+}
+
+.quest-box h3 {
+    margin-top: 0;
+}
+
+.start-tutorial {
+    padding: 10px 20px;
+    background-color: #4934d49c; /* Bluish violet */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.start-tutorial:hover {
+    background-color: #7158e2; /* Lighter violet */
+    transform: scale(1.05); /* Hover scaling */
+    box-shadow: 0 0 10px rgba(137, 196, 244, 0.8); /* Blue glow */
+}
+
+a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#lecture-container p {
+    background-color: #1950748d;
+    border: 1px solid #fff;
+    padding: 20px;
+    margin: 30px;
+}
+
+.activity-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.activity-container h2 {
+    margin-top: 50px;
+}
+
+#game-prob {
+    background-color: #2b64c0;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+#game-prob:hover {
+    background-color: #3c6de7; /* Lighter red on hover */
+    box-shadow: 0 0 10px rgba(0, 72, 255, 0.8); /* Red glow */
+}
+
+
+#answer {
+    width: 300px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+#answer:focus {
+    border-color: #0056b3;
+}
+
+#checkAnswer {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#checkAnswer:hover {
+    background-color: #0056b3;
+}
+
+#checkAnswer:active {
+    background-color: #003f7f;
+}
+
+#runeSelect {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    appearance: none; /* Hides the default arrow in some browsers */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon fill="%23333" points="0,0 10,0 5,5"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+  }
+
+  #runeSelect:hover {
+    border-color: #0056b3;
+  }
+
+  #runeSelect:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
 /*------------------------------------*/
 
 :root {

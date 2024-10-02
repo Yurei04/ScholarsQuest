@@ -97,6 +97,11 @@
                                 <p>Guess Pictures</p>
                                 <button class="return" title="return" onclick="goBack()">Go Back</button>
                                 <button id="starting" onclick="showSpells(spells)">START</button>
+                                <div class="img-containers-game">
+                                    <div class="img-container" id="img-container1"></div>
+                                    <div class="img-container" id="img-container2"></div>
+                            
+                                </div>
                                 <div class="outerWrap">
                                     <div class="scoreWrap">
                                         <p>Score</p>
@@ -113,11 +118,11 @@
                                     <button class="spell" onclick="selectSpell('intermediate')" id="intermediate">Intermediate</button>
                                     <button class="spell" onclick="selectSpell('complex')" id="complex">Complex</button>
                                 </div>
-                                <div class="img-container" id="img-container1"></div>
-                                <div class="img-container" id="img-container2"></div>
-                        
-                                <div class="boxes" id="boxes"></div>
-                                <button title="checking" id="checking" onclick="checking()"></button>
+
+                                <div class="boxes" id="boxes">
+
+                                </div>
+                                <button title="checking" id="checking" onclick="checking()">Check My Answer</button>
                             </div>
                             
                         </div>
@@ -135,7 +140,7 @@
     
 
     <script src="../JS/scholarsQuestSciChem.js"></script>
-    <script type="module" src="../../BACKEND/PHASES/SciChemBattle.js" onerror="handleScriptLoadError()"></script>
+    <script src="../../BACKEND/PHASES/SciChemBattle.js" onerror="handleScriptLoadError()"></script>
     <script>
         function handleScriptLoadError() {
             alert("Sorry for the inconvenience, but the required feature could not be activated due to restrictions or a failed script load.");

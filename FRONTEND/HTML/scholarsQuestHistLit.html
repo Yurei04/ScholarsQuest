@@ -70,33 +70,71 @@
                                 <button class="btn-hands-on" title="entrance" onclick="enter('hands-on-container')"> Hands On Hall </button>
                                 <button class="btn-activity" title="entrance" onclick="enter('activity-container')"> Training Area </button>
                             </div>
-                        
+                            
                             <div id="lecture-container" class="lecture-container">
                                 <h2>Lecture Content</h2>
-                                <p>This is where the lecture content goes.</p>
-                                <button class="return" title="return" onclick="goBack()"></button>
+                                <p>This is a long essay about history and literature.</p>
+                                <p>
+                                    Throughout history, literature has served as a powerful tool for expression and communication, providing insight into the human experience and reflecting the cultural, social, and political climates of various eras. From the ancient epics of Mesopotamia and Greece, such as the "Epic of Gilgamesh" and Homer's "Iliad," literature has documented human struggles, triumphs, and the quest for understanding. 
+                                </p>
+                                <p>
+                                    In the Middle Ages, the rise of religious texts and poetry demonstrated the importance of faith and morality, while the Renaissance period heralded a rebirth of classical learning and the exploration of humanism, as seen in the works of Shakespeare and Dante. The Enlightenment further propelled literature into the realms of reason and individualism, influencing the works of authors like Voltaire and Rousseau. 
+                                </p>
+                                <p>
+                                    The 19th and 20th centuries marked a significant shift in literary forms and themes, with the emergence of realism, modernism, and postmodernism, reflecting the complexities of contemporary life and the inner workings of the human mind. Authors such as F. Scott Fitzgerald, Virginia Woolf, and Gabriel Garcia Marquez broke traditional narratives, pushing the boundaries of storytelling and exploring the fluidity of time and identity.
+                                </p>
+                                <p>
+                                    Today, literature continues to evolve, engaging with pressing global issues such as identity, race, and technology, and remains a vital medium for dialogue and reflection on the human condition. The interplay between history and literature serves not only as a record of our past but also as a catalyst for change, inspiring future generations to question, imagine, and create.
+                                </p>
+                                <button class="return" title="return" onclick="goBack()"> Go Back </button>
                             </div>
-                        
+                            
                             <div id="hands-on-container" class="hands-on-container">
                                 <h2>Hands-on Content</h2>
-                                <p>This is where the hands-on content goes.</p>
-                                <button class="return" title="return" onclick="goBack()"></button>
+                                <h3>Quests</h3>
+                                <div class="quest-container">
+                                    <div class="quest-box">
+                                        <h3>Quest 1</h3>
+                                        <p>Guess 5 words from the training hall and gain 50 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 2</h3>
+                                        <p>Solve 3 math problems to gain 100 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 3</h3>
+                                        <p>Identify 4 elements from the periodic table to gain 75 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 4</h3>
+                                        <p>Complete the science quiz to gain 120 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 5</h3>
+                                        <p>Match the chemical reactions and gain 90 EXP.</p>
+                                    </div>
+                                    <div class="quest-box">
+                                        <h3>Quest 6</h3>
+                                        <p>Find the solution to the physics puzzle and gain 110 EXP.</p>
+                                    </div>
+                                </div><button class="return" title="return" onclick="goBack()"> Go Back </button>
                             </div>
+                            
                         
                             <div id="activity-container" class="activity-container">
                                 <h2>Activity Content</h2>
                                 <p>This is where the activity content goes.</p>
                                 <button class="training" title="activity" onclick="typingGame('typing-game-container')">Open Game</button>
-                                <button class="return" title="return" onclick="goBack()"></button>
+                                <button class="return" title="return" onclick="goBack()"> Go Back </button>
                             </div>
                         </div>
                     
                         <div class="typing-game-container" id="typing-game-container">
                             <div class="wrapper">
-                                <h1>Typing game by Nikola Simovic</h1>
+                                <h1>Typing game</h1>
                                 <p>Type as many words as you can until time runs out!</p>
-                                <button class="return" title="return" onclick="goBack()"></button>
-                                <button>START</button>
+                                <button class="return" title="return" onclick="goBack()"> Go Back </button>
+                                <button id="button-game">START</button>
                                 <div class="outerWrap">
                                     <div class="scoreWrap">
                                         <p>Score</p>
@@ -104,7 +142,7 @@
                                     </div>
                                     <div class="timeWrap">
                                         <p>Time left</p>
-                                        <span class="time">60</span>
+                                        <span class="time">30</span>
                                     </div>
                                 </div>
                                 <div class="wordsWrap">
@@ -124,7 +162,7 @@
 
 
     <script src="../JS/scholarsQuestHistLit.js"></script>
-    <script type="module" src="../../BACKEND/PHASES/HistLitBattle.js" onerror="handleScriptLoadError()"></script>
+    <script src="../../BACKEND/PHASES/HistLitBattle.js" onerror="handleScriptLoadError()"></script>
     <script>
         function handleScriptLoadError() {
             alert("Sorry for the inconvenience, but the required feature could not be activated due to restrictions or a failed script load.");
