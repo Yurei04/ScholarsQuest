@@ -1,211 +1,102 @@
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM fully loaded and parsed");
-});
+// Game data - Different sets for different difficulties
+const simpleGameData = [
+    { images: ["img1.jpg", "img2.jpg"], answer: "cat" },
+    { images: ["img3.jpg", "img4.jpg"], answer: "sun" }
+];
 
-console.log("DOM fully loaded and parsed");
+const intermediateGameData = [
+    { images: ["img5.jpg", "img6.jpg"], answer: "apple" },
+    { images: ["img7.jpg", "img8.jpg"], answer: "tree" },
+    { images: ["img9.jpg", "img10.jpg"], answer: "dog" }
+];
 
-let words = ["NATURE", "DISEASE", "OXYGEN", "CLIMATE"];
+const complexGameData = [
+    { images: ["img11.jpg", "img12.jpg"], answer: "mountain" },
+    { images: ["img13.jpg", "img14.jpg"], answer: "river" },
+    { images: ["img15.jpg", "img16.jpg"], answer: "ocean" },
+    { images: ["img17.jpg", "img18.jpg"], answer: "bicycle" }
+];
 
-var button = document.querySelector("#starting");
-var timerDiv = document.querySelector(".time");
-var scoreDiv = document.querySelector(".score");
-let guesses = 0;
-let guessLimit = 0;
-let questionsAnswered = 0;
-let correctGuesses = 0;
-let seconds = 60;
-let points = 0;
-let currentSpell;
-let randomWord;
-let countDownTimer;
+let currentRound = 0;
+let score = 0;
+let timeLeft = 30;
+let timer;
+let gameData = []; // This will hold the selected difficulty's game data
 
-let spells = {
-    "simple": {
-        questions: 1,
-        maxGuesses: 3,
-        damage: 2
-    },
-    "intermediate": {
-        questions: 2,
-        maxGuesses: 2,
-        damage: 4
-    },
-    "complex": {
-        questions: 3,
-        maxGuesses: 1,
-        damage: 6
+// Show the difficulty selection screen
+function showDifficulty() {
+    document.getElementById("activity-container").style.display = "none";
+    document.getElementById("difficulty-screen").style.display = "block";
+}
+
+// Start the game based on the selected difficulty
+function startGame(difficulty) {
+    document.getElementById("difficulty-screen").style.display = "none";
+    document.getElementById("game-container").style.display = "block";
+
+    // Set the game data based on difficulty
+    if (difficulty === 'simple') {
+        gameData = simpleGameData;
+    } else if (difficulty === 'intermediate') {
+        gameData = intermediateGameData;
+    } else if (difficulty === 'complex') {
+        gameData = complexGameData;
+    }
+
+    loadImages(); // Start the game with the first set of images
+    startTimer(); // Start the timer
+}
+
+// Load images for the current round
+function loadImages() {
+    if (currentRound < gameData.length) {
+        document.getElementById("image1").src = gameData[currentRound].images[0];
+        document.getElementById("image2").src = gameData[currentRound].images[1];
+        document.getElementById("wordGuess").value = ""; // Clear input
+        document.getElementById("feedback").textContent = ""; // Clear feedback
+    } else {
+        currentRound = 0; // Loop back to the first round if all rounds are completed
+        loadImages();
     }
 }
-console.log("DOM fully loaded and parsed");
-function countdown() {
-    var timer = setInterval(function() {
-        seconds--; 
-        timerDiv.innerHTML = seconds; 
 
-        if (seconds === 0) {
-            alert("Game over! Your total damage dealt is " + points);
-            scoreDiv.innerHTML = "0"; 
+// Check if the guess is correct
+function checkAnswer() {
+    const userGuess = document.getElementById("wordGuess").value.toLowerCase();
+    const correctAnswer = gameData[currentRound].answer;
+
+    if (userGuess === correctAnswer) {
+        document.getElementById("feedback").textContent = "Correct!";
+        score++;
+        document.getElementById("score").textContent = score; // Update score
+        currentRound++;
+        setTimeout(loadImages, 1000); // Move to the next round after 1 second
+    } else {
+        document.getElementById("feedback").textContent = "Try again!";
+    }
+}
+
+// Timer countdown logic
+function startTimer() {
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+
+        if (timeLeft <= 0) {
             clearInterval(timer);
-            button.disabled = false; 
-            seconds = 60;
-            timerDiv.innerHTML = "60"; 
+            endGame();
         }
     }, 1000);
 }
 
-  
-
-button.addEventListener("click", function(e){
-    showSpells()
-});
-
-function showSpells() {
-    let spellContainer = document.querySelector('.spells');
-    if (spellContainer) {
-        spellContainer.style.display = 'none'; 
-        console.log("Spells container is now active");
-    } else {
-        console.error("Spells container not found!");
-    }
-}
-function selectSpell(spellId) {
-    console.log(`Selected spell: ${spellId}`);
-    currentSpell = spells[spellId];
-    guessLimit = currentSpell.maxGuesses;
-    questionsAnswered = 0;
-    correctGuesses = 0;
-    
-
-    let spellContainer = document.querySelector('.spells');
-    if (spellContainer) {
-        spellContainer.classList.remove('active');
-        console.log("Spells container is now hidden.");
-    }
-
-    startGame();
+// End the game when time runs out
+function endGame() {
+    document.getElementById("endMessage").textContent = `Time's up! You guessed ${score} words correctly.`;
+    document.getElementById("wordGuess").disabled = true; // Disable input
+    document.querySelector("button").disabled = true; // Disable submit button
 }
 
-function startGame() {
-    countdown();
-
-    wordBoxMaker(generateWord());
-    imgShow();
-    
-    console.log("Game started.");
-}
-
-
-async function spellComplexityFunction() {
-    if (questionsAnswered === currentSpell.questions) { 
-        spellActivation()
-    } else {
-        clearInterval(countDownTimer);
-        guesses = 0;
-        questionsAnswered += 1;
-        await delay(3000); 
-        clearing();
-        wordBoxMaker(generateWord());
-        imgShow();
-    }
-}
-
-function spellActivation() {
-    let damage = currentSpell.damage;
-    reduceEnemyHp(damage);
-
-    if(enemyHP <= 0) {
-        return;
-    } else {
-        spellComplexityFunction();
-    }
-}
-
-function generateWord() {
-    randomWord = words[Math.floor(Math.random() * words.length)]; 
-    let cuttedWords = randomWord.split("");
-    return cuttedWords;
-}
-
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms)); 
-}
-
-function wordBoxMaker(cuttedWords) {
-    let boxContainer = document.getElementById("boxes");
-    boxContainer.innerHTML = "";
-
-    cuttedWords.forEach(letter => {
-        let createBox = document.createElement("div");
-        createBox.className = "letter-box";
-        createBox.innerHTML = "_";
-        boxContainer.appendChild(createBox);
-    });
-}
-
-function imgShow() {
-    let imgContainer1 = document.getElementById("img-container1");
-    let imgContainer2 = document.getElementById("img-container2");
-
-    imgContainer1.innerHTML = "";
-    imgContainer2.innerHTML = "";
-
-    let createImg1 = document.createElement("img");
-    createImg1.src = "hint2- " + randomWord;
-    imgContainer1.appendChild(createImg1);
-    
-    let createImg2 = document.createElement("img");
-    createImg2.src = "hint1- " + randomWord;
-    imgContainer2.appendChild(createImg2);    
-}
-
-function checking() {
-    let guessedWord = Array.from(document.querySelectorAll(".letter-box")).map(box => box.innerHTML).join("");
-
-
-    if (guessedWord === randomWord) {
-        correctGuesses += 1;
-        if (correctGuesses === currentSpell.questions) {
-            spellActivation()
-        } else {
-            spellComplexityFunction();
-        }
-    } else {
-        incorrect();
-    }
-}
-
-
-document.getElementById("SciChecker").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        checkingProblem();
-    }
-});
-
-
-async function incorrect() {
-    guesses += 1;
-
-    if (guesses === guessLimit) {
-        clearing()
-    } else {
-        document.querySelectorAll("p").forEach(typedWord => {
-            typedWord.style.color = "red";
-        });
-        await delay(2000);
-        document.querySelectorAll("p").forEach(typedWord => {
-            typedWord.style.color = "#fff";
-        });
-    }
-}
-
-function clearing() {
-    let boxContainers = document.getElementById("boxes");
-    let imgContainer1 = document.getElementById("img-container1");
-    let imgContainer2 = document.getElementById("img-container2");
-
-    boxContainers.innerHTML = "";
-    imgContainer1.innerHTML = "";
-    imgContainer2.innerHTML = "";
-    guesses = 0;
-    clearInterval(countDownTimer);
-}
+// Start the game when the page loads
+window.onload = () => {
+    document.getElementById("activity-container").style.display = "block"; // Show start screen initially
+};

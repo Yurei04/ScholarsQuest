@@ -134,42 +134,33 @@
                             </div>
                             <!-- Training Hall (Activity Container) -->
                             <div id="activity-container" class="activity-container">
-                                <h2>Training Hall</h2>
-                                <p>Welcome to the Training Hall! This area features interactive tutorials, practice problems, and more to help you improve your knowledge in math, science, and technology.</p>
-                                <button id="game-prob" onclick="problemSolving('problem-solving-container')">Problem Solving Game</button>
-
+                                <h1>Welcome to the Problem Solving Game!</h1>
+                                <button onclick="showDifficultyScreen()">Start Game</button>
                                 <button class="return top-left" title="return" onclick="goBack()">Go Back</button>
                             </div>
                         </div>
                         
                     
-                            <div class="problem-solving-container" id="problem-solving-container">
-                                <div class="wrapper">
-                                    <h2>Problem Solving Game</h2>
-                                    <select id="runeSelect">
-                                        <option value="simple">Simple</option>
-                                        <option value="intermediate">Intermediate</option>
-                                        <option value="complex">Complex</option>
-                                    </select>
-                                    <button id="techChecker" title="Submit" class="submit-math">Start Game</button>
-                                    <button class="return top-left" title="return" onclick="goBack()">Go Back</button>
-                        
-                                    <div id="problem-container"></div>
-                                    <input type="text" id="answer" placeholder="Enter your answer" />
-                                    <button id="checkAnswer" class="submit-math" title="checking">Submit Answer</button>
-                        
-                                    <div class="outerWrap">
-                                        <div class="scoreWrap">
-                                            <p>Score</p>
-                                            <span class="score">0</span>
-                                        </div>
-                                        <div class="timeWrap">
-                                            <p>Time left</p>
-                                            <span class="time">30</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div id="difficulty-screen">
+                            <h1>Choose Difficulty</h1>
+                            <button onclick="startGame('simple')">Simple</button>
+                            <button onclick="startGame('intermediate')">Intermediate</button>
+                            <button onclick="startGame('complex')">Complex</button>
+                        </div>
+                    
+                        <!-- Game Screen -->
+                        <div class="game-container">
+                            <h2 id="question-text">Solve the problem:</h2>
+                            <div class="question-area">
+                                <span id="question"></span>
                             </div>
+                            <input type="text" id="answer-input" placeholder="Enter your answer">
+                            <button onclick="submitAnswer()">Submit</button>
+                            <p id="feedback"></p>
+                            <div class="timer">Time Left: <span id="timer">60</span>s</div>
+                            <div class="score">Score: <span id="score">0</span></div>
+                        </div>
+                    
                     
                         <div class="background"></div>
                     </div>

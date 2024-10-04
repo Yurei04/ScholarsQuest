@@ -176,8 +176,7 @@ a {
 /* Container Styles */
 .lecture-container,
 .hands-on-container,
-.activity-container,
-.problem-solving-container {
+.activity-container {
     top: 0;
     left: 0;
     width: 100vw;
@@ -199,12 +198,6 @@ a {
     background-size: cover;
 }
 
-.problem-solving-container {
-    z-index: 300;
-    background-image: url("../RESOURCES/TECH/BACKGROUNDS/tech.jpg");
-    background-position: center;
-    background-size: cover;
-}
 
 #lecture-container {
     align-items: center;
@@ -273,22 +266,6 @@ a {
     margin-top: 0;
 }
 
-.start-tutorial {
-    padding: 10px 20px;
-    background-color: #4934d49c; /* Bluish violet */
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.start-tutorial:hover {
-    background-color: #7158e2; /* Lighter violet */
-    transform: scale(1.05); /* Hover scaling */
-    box-shadow: 0 0 10px rgba(137, 196, 244, 0.8); /* Blue glow */
-}
-
 a {
     color: #2980b9;
     text-decoration: none;
@@ -306,96 +283,10 @@ a:hover {
     margin: 30px;
 }
 
-.activity-container {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
 .activity-container h2 {
     margin-top: 50px;
 }
 
-#game-prob {
-    background-color: #2b64c0;
-    color: white;
-    padding: 10px;
-    margin-top: 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-
-#game-prob:hover {
-    background-color: #3c6de7; /* Lighter red on hover */
-    box-shadow: 0 0 10px rgba(0, 72, 255, 0.8); /* Red glow */
-}
-
-
-#answer {
-    width: 300px;
-    padding: 10px;
-    margin-right: 10px;
-    border: 2px solid #007BFF;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s ease-in-out;
-}
-
-#answer:focus {
-    border-color: #0056b3;
-}
-
-#checkAnswer {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-#checkAnswer:hover {
-    background-color: #0056b3;
-}
-
-#checkAnswer:active {
-    background-color: #003f7f;
-}
-
-#runeSelect {
-    width: 200px;
-    padding: 10px;
-    border: 2px solid #007BFF;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #fff;
-    color: #333;
-    cursor: pointer;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    outline: none;
-    appearance: none; /* Hides the default arrow in some browsers */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon fill="%23333" points="0,0 10,0 5,5"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 10px;
-  }
-
-  #runeSelect:hover {
-    border-color: #0056b3;
-  }
-
-  #runeSelect:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
 /*------------------------------------*/
 
 :root {
@@ -809,4 +700,79 @@ p.general {
     color: #777;
     border: 1px solid #777;
   }
-  
+
+#activity-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('scibkg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: 1000;
+}
+
+#difficulty-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('scibkg.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1000;
+}
+
+/* Game Container Styling */
+.game-container {
+    display: none;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    padding: 20px;
+    position: fixed;
+    text-align: center;
+    z-index: 9999;
+    border: 2px solid #0288d1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+}
+
+.timer, .score {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#feedback {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+#answer-input input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #0288d1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#difficulty-screen button {
+    background-color: #0288d1;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#difficulty-screen button:hover {
+    background-color: #0277bd;
+}

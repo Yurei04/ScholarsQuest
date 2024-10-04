@@ -190,25 +190,13 @@ a {
 }
 
 .lecture-container,
-.hands-on-container,
-.activity-container {
+.hands-on-container {
     z-index: 100; 
     background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
     background-position: center;
     background-size: cover;
 }
 
-.twoPics-oneWord-container {
-    z-index: 500; 
-    background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
-    background-position: center;
-    background-size: cover;
-}
-
-.spells {
-    z-index: 400; 
-    background-color: #424242;
-}
 
 #lecture-container {
     align-items: center;
@@ -232,21 +220,6 @@ a {
     opacity: 1;
 }
 
-
-.img-containers-game {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.img-container {
-    height: 200px;
-    width: 300px;
-    margin: 10px;
-    border: 2px solid #fff;
-    border-radius: 14px;
-}
 
 .return {
     background-color: #c0392b;
@@ -284,34 +257,6 @@ a {
     margin-top: 0;
 }
 
-.activity-container {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.activity-container h2 {
-    margin-top: 200px;
-}
-
-.twoOne {
-    font-family: "MedievalSharp", cursive;
-    font-weight: 400;
-    background-color: #bbc02b;
-    color: rgb(66, 64, 64);
-    padding: 10px;
-    margin-top: 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-
-.twoOne:hover {
-    background-color: #dce73c; /* Lighter red on hover */
-    box-shadow: 0 0 10px rgba(225, 255, 0, 0.8); /* Red glow */
-}
 
 
 :root {
@@ -725,3 +670,152 @@ p.general {
     border: 1px solid #777;
   }
   
+
+
+  #game-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%; 
+    height: 100vh;  
+    padding: 20px;
+    position: fixed;  
+    text-align: center;
+    z-index: 9999;  
+    border: 2px solid #0288d1;
+    display: none; 
+    top: 0;        
+    left: 0;     
+    background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Show Game Container After Difficulty is Chosen */
+.show-game {
+    display: flex;   /* Flex will show the container */
+    z-index: 2000;   /* Bring the game to the front after selection */
+}
+
+.game-container h1, h2 {
+    color: #0288d1;
+    font-weight: bold;
+}
+
+.game-container button {
+    background-color: #0288d1; /* Chemistry blue */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    
+}
+
+.game-container button:hover {
+    background-color: #0277bd;
+}
+
+/* Timer and score panel */
+.timer, .score {
+    font-size: 18px;
+    color: #0277bd;
+    margin-bottom: 15px;
+}
+
+.timer span, .score span {
+    font-weight: bold;
+    color: #d32f2f; /* Red for visibility */
+}
+
+/* End message */
+#endMessage {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #007bff;
+}
+
+/* Image container styling */
+.image-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Input styling */
+.input-container input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #0288d1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+#difficulty-screen {
+    z-index: 900; 
+    position: fixed;  /* or use 'fixed' if you want it to stay in place while scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;        /* Ensures it covers the whole screen */
+    height: 100vh;      /* Full viewport height */
+    background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* Feedback message */
+#feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #d32f2f;
+}
+
+/* Start screen styling */
+#start-screen {
+    background-image: url('science-bg.jpg'); /* Placeholder for lab-themed background */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#difficulty-screen {
+    background-color: #e1f5fe;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Chemistry-themed animations */
+@keyframes molecule-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

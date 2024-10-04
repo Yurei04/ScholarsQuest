@@ -1,186 +1,113 @@
-import { enemyHP, reduceEnemyHp } from "./";
-
-let simpleProblems =  {
-    problem1: { question: "1 + 1 = ?", answer: 2 },
-    problem2: { question: "3 - 2 = ?", answer: 1 },
-    problem3: { question: "5 * 1 = ?", answer: 5 }
+let currentQuestion = 0;
+let totalQuestions = 0;
+let score = 0;
+let timer;
+let timeLeft = 60;
+let difficultyQuestions = {
+    simple: 3,
+    intermediate: 5,
+    complex: 7
 };
+let currentDifficulty = '';
+let currentAnswer = 0;
 
-let intermediateProblems =  {
-    problem1: { question: "10 / 2 = ?", answer: 5 },
-    problem2: { question: "7 + 3 = ?", answer: 10 },
-    problem3: { question: "12 - 5 = ?", answer: 7 },
-    problem4: { question: "8 * 2 = ?", answer: 16 }
-};
-
-let complexProblems =  {
-    problem1: { question: "12 / 3 = ?", answer: 4 },
-    problem2: { question: "6 * 6 = ?", answer: 36 },
-    problem3: { question: "25 - 7 = ?", answer: 18 },
-    problem4: { question: "50 + 25 = ?", answer: 75 },
-    problem5: { question: "100 / 5 = ?", answer: 20 },
-    problem6: { question: "45 - 15 = ?", answer: 30 }
-};
-
-let runes = {
-    "simple": { problems: 3, maxTries: 6, damage: 3 },
-    "intermediate": { problems: 4, maxTries: 4, damage: 6 },
-    "complex": { problems: 6, maxTries: 4, damage: 9 }
-};
-
-let currentRune;
-let tryLimit = 0;
-let tries = 0;
-let correctAnswers = 0;
-let randomProblem;
-let timerDisplay = document.querySelector('.time');
-let submitButton = document.querySelector("button");
-let mathProblemTimer = new Timer(30, updateMathTimerUI, mathGameOver);
-
-class Timer {
-    constructor(seconds, onTick, onComplete) {
-      this.seconds = seconds;
-      this.initialSeconds = seconds;
-      this.onTick = onTick; 
-      this.onComplete = onComplete;
-      this.interval = null;
-    }
-  
-    start() {
-      this.interval = setInterval(() => {
-        this.seconds--;
-        this.onTick(this.seconds);
-  
-        if (this.seconds <= 0) {
-          this.stop();
-          this.onComplete();
-        }
-      }, 1000);
-    }
-  
-    stop() {
-      clearInterval(this.interval);
-      this.seconds = this.initialSeconds;
-    }
-  
-    reset() {
-      this.stop();
-      this.seconds = this.initialSeconds;
-    }
-}
-  
-const updateMathTimerUI = (secondsLeft) => {
-    timerDisplay.innerHTML = secondsLeft;
-};
-
-const mathGameOver = () => {
-    alert("Time’s up! You scored " + correctAnswers);
-    submitButton.disabled = false;
-};
-
-submitButton.addEventListener("click", function(e) {
-    let selectedRune = document.getElementById("runeSelect").value;
-    selectSorcery(selectedRune);
-    mathProblemTimer.start(); 
-});
-
-function selectSorcery(rune) {
-    let runeType = rune.id;
-    currentRune = runes[runeType];
-    tryLimit = currentRune.maxTries;
-    triedAnswers = 0;
-    correctAnswers = 0;
-    formulaProblemGenerator();
+// Function to display the difficulty screen
+function showDifficultyScreen() {
+    // Hide start screen and show difficulty screen
+    document.getElementById('activity-container').style.display = 'none';
+    document.getElementById('difficulty-screen').style.display = 'flex';
 }
 
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-function formulaProblemGenerator() {
-    let problems;
-    if (currentRune === runes.simple) {
-        problems = Object.values(simpleProblems);
-    } else if (currentRune === runes.intermediate) {
-        problems = Object.values(intermediateProblems);
-    } else if (currentRune === runes.complex) {
-        problems = Object.values(complexProblems);
-    }
-    randomProblem = problems[Math.floor(Math.random() * problems.length)];
-    document.getElementById("problem-container").innerHTML = randomProblem.question; 
-}
+// Function to start the game
+function startGame(difficulty) {
+    // Set difficulty and number of questions
+    totalQuestions = difficultyQuestions[difficulty];
+    currentDifficulty = difficulty;
 
+    // Hide difficulty screen and show game container
+    document.getElementById('difficulty-screen').style.display = 'none';
+    document.querySelector('.game-container').style.display = 'flex';
 
-function checkingProblem() {
-    let trueAnswer = parseInt(document.getElementById("answer").value);
+    // Start game settings
+    score = 0;
+    currentQuestion = 0;
+    timeLeft = 60;
 
-    if (trueAnswer === randomProblem.answer) {
-        correctAnswers += 1;
-        if(correctAnswers === currentRune.problems) {
-            runeActivation()
-        } else {
-            runeComplexityFunction()
-        }
-    } else {
-        wrong()
-    }
+    // Update score and timer
+    document.getElementById('score').innerText = score;
+    document.getElementById('timer').innerText = timeLeft;
+
+    // Start timer
+    timer = setInterval(countdown, 1000);
+
+    // Load the first question
+    loadQuestion();
 }
 
-document.getElementById("techChecker").addEventListener("click", function(e) {
-    let selectedRune = document.getElementById("runeSelect").value;
-    selectSorcery(selectedRune);
-    mathProblemTimer.start();
-});
-
-document.getElementById("checkAnswer").addEventListener("click", function(e) {
-    checkingProblem();
-});
-
-
-
-async function runeComplexityFunction() {
-    if(correctAnswers === currentRune.problems) {
-        runeActivation();
+function loadQuestion() {
+    if (currentQuestion >= totalQuestions) {
+        endGame();
         return;
+    }
+
+    // Generate a random math question (multiplication, addition, subtraction, division)
+    const operators = ['+', '-', '*', '/'];
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const operator = operators[Math.floor(Math.random() * operators.length)];
+
+    // Calculate the correct answer
+    switch (operator) {
+        case '+':
+            currentAnswer = num1 + num2;
+            break;
+        case '-':
+            currentAnswer = num1 - num2;
+            break;
+        case '*':
+            currentAnswer = num1 * num2;
+            break;
+        case '/':
+            currentAnswer = (num1 / num2).toFixed(2); // Round division to 2 decimal places
+            break;
+    }
+
+    // Display the question
+    document.getElementById('question').innerText = `${num1} ${operator} ${num2}`;
+    currentQuestion++;
+}
+
+function submitAnswer() {
+    const userAnswer = document.getElementById('answer-input').value;
+
+    if (userAnswer == currentAnswer) {
+        score++;
+        document.getElementById('score').innerText = score;
+        document.getElementById('feedback').innerText = 'Correct!';
     } else {
-        clearInterval(mathProblemTimer);  
-        tries = 0;
-        await delay(3000)
-        clearing();
-        formulaProblemGenerator();
+        document.getElementById('feedback').innerText = 'Incorrect!';
+    }
+
+    // Clear the input
+    document.getElementById('answer-input').value = '';
+
+    // Load the next question
+    loadQuestion();
+}
+
+function countdown() {
+    timeLeft--;
+    document.getElementById('timer').innerText = timeLeft;
+
+    if (timeLeft <= 0) {
+        clearInterval(timer);
+        endGame();
     }
 }
 
-function runeActivation() {
-    let damage = currentRune.damage;
-    reduceEnemyHp(damage);
-
-    if(enemyHP <= 0) {
-        return;
-    } else {
-        runeComplexityFunction();
-    }
-}
-
-
-function wrong() {
-    tries += 1;
-    if (tries >= tryLimit) {
-        console.log("Out of tries. Rune failed.");
-        clearing(); 
-    } else {
-        console.log(`Incorrect. You have ${tryLimit - tries} tries left.`);
-    }
-}
-
-
-function clearing() {
-    let problemContainer = document.getElementById("problem-container");
-    problemContainer.innerHTML = "";
-    tries = 0;
-    clearInterval(mathProblemTimer);  
-}
-
-
-function handleScriptLoadError() {
-    alert("Sorry for the inconvenience, but the required feature could not be activated due to restrictions or a failed script load.");
+function endGame() {
+    clearInterval(timer);
+    document.getElementById('feedback').innerText = `Game Over! Your score: ${score}`;
+    document.querySelector('.game-container').style.display = 'none';
+    document.getElementById('difficulty-screen').style.display = 'flex';
 }
