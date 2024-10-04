@@ -1,20 +1,20 @@
 // Game data - Different sets for different difficulties
 const simpleGameData = [
-    { images: ["../RESOURCES/GLOBAL/img1.png", "../RESOURCES/GLOBAL/img2.jpeg"], answer: "cat" },
+    { images: ["../RESOURCES/GLOBAL/img1.png", "../RESOURCES/GLOBAL/img2.jpg"], answer: "cat" },
     { images: ["../RESOURCES/GLOBAL/img3.jpg", "../RESOURCES/GLOBAL/img4.jpeg"], answer: "sun" }
 ];
 
 const intermediateGameData = [
     { images: ["../RESOURCES/GLOBAL/img5.jpg", "../RESOURCES/GLOBAL/img6.jpeg"], answer: "apple" },
-    { images: ["../RESOURCES/GLOBAL/img7.jpg", "../RESOURCES/GLOBAL/img8.jpg"], answer: "tree" },
-    { images: ["../RESOURCES/GLOBAL/img9.jpg", "../RESOURCES/GLOBAL/img10.jpg"], answer: "dog" }
+    { images: ["../RESOURCES/GLOBAL/img7.jpeg", "../RESOURCES/GLOBAL/img8.jpg"], answer: "tree" },
+    { images: ["../RESOURCES/GLOBAL/img9.jpeg", "../RESOURCES/GLOBAL/img10.jpeg"], answer: "dog" }
 ];
 
 const complexGameData = [
-    { images: ["../RESOURCES/GLOBAL/img11.jpg", "../RESOURCES/GLOBAL/img12.jpg"], answer: "mountain" },
-    { images: ["../RESOURCES/GLOBAL/img13.jpg", "../RESOURCES/GLOBAL/img14.jpg"], answer: "river" },
-    { images: ["../RESOURCES/GLOBAL/img15.jpg", "../RESOURCES/GLOBAL/img16.jpg"], answer: "ocean" },
-    { images: ["../RESOURCES/GLOBAL/img17.jpg", "../RESOURCES/GLOBAL/img18.jpg"], answer: "bicycle" }
+    { images: ["../RESOURCES/GLOBAL/img11.jpeg", "../RESOURCES/GLOBAL/img12.jpg"], answer: "mountain" },
+    { images: ["../RESOURCES/GLOBAL/img13.jpg", "../RESOURCES/GLOBAL/img14.png"], answer: "river" },
+    { images: ["../RESOURCES/GLOBAL/img15.jpeg", "../RESOURCES/GLOBAL/img16.jpeg"], answer: "ocean" },
+    { images: ["../RESOURCES/GLOBAL/img17.jpeg", "../RESOURCES/GLOBAL/img18.png"], answer: "bicycle" }
 ];
 
 
