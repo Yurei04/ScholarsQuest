@@ -1,21 +1,22 @@
 // Game data - Different sets for different difficulties
 const simpleGameData = [
-    { images: ["img1.jpg", "img2.jpg"], answer: "cat" },
-    { images: ["img3.jpg", "img4.jpg"], answer: "sun" }
+    { images: ["../RESOURCES/GLOBAL/img1.png", "../RESOURCES/GLOBAL/img2.jpeg"], answer: "cat" },
+    { images: ["../RESOURCES/GLOBAL/img3.jpg", "../RESOURCES/GLOBAL/img4.jpeg"], answer: "sun" }
 ];
 
 const intermediateGameData = [
-    { images: ["img5.jpg", "img6.jpg"], answer: "apple" },
-    { images: ["img7.jpg", "img8.jpg"], answer: "tree" },
-    { images: ["img9.jpg", "img10.jpg"], answer: "dog" }
+    { images: ["../RESOURCES/GLOBAL/img5.jpg", "../RESOURCES/GLOBAL/img6.jpeg"], answer: "apple" },
+    { images: ["../RESOURCES/GLOBAL/img7.jpg", "../RESOURCES/GLOBAL/img8.jpg"], answer: "tree" },
+    { images: ["../RESOURCES/GLOBAL/img9.jpg", "../RESOURCES/GLOBAL/img10.jpg"], answer: "dog" }
 ];
 
 const complexGameData = [
-    { images: ["img11.jpg", "img12.jpg"], answer: "mountain" },
-    { images: ["img13.jpg", "img14.jpg"], answer: "river" },
-    { images: ["img15.jpg", "img16.jpg"], answer: "ocean" },
-    { images: ["img17.jpg", "img18.jpg"], answer: "bicycle" }
+    { images: ["../RESOURCES/GLOBAL/img11.jpg", "../RESOURCES/GLOBAL/img12.jpg"], answer: "mountain" },
+    { images: ["../RESOURCES/GLOBAL/img13.jpg", "../RESOURCES/GLOBAL/img14.jpg"], answer: "river" },
+    { images: ["../RESOURCES/GLOBAL/img15.jpg", "../RESOURCES/GLOBAL/img16.jpg"], answer: "ocean" },
+    { images: ["../RESOURCES/GLOBAL/img17.jpg", "../RESOURCES/GLOBAL/img18.jpg"], answer: "bicycle" }
 ];
+
 
 let currentRound = 0;
 let score = 0;
