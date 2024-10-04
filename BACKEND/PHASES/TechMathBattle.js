@@ -11,36 +11,27 @@ let difficultyQuestions = {
 let currentDifficulty = '';
 let currentAnswer = 0;
 
-// Function to display the difficulty screen
 function showDifficultyScreen() {
-    // Hide start screen and show difficulty screen
     document.getElementById('activity-container').style.display = 'none';
     document.getElementById('difficulty-screen').style.display = 'flex';
 }
 
-// Function to start the game
 function startGame(difficulty) {
-    // Set difficulty and number of questions
     totalQuestions = difficultyQuestions[difficulty];
     currentDifficulty = difficulty;
 
-    // Hide difficulty screen and show game container
     document.getElementById('difficulty-screen').style.display = 'none';
     document.querySelector('.game-container').style.display = 'flex';
 
-    // Start game settings
     score = 0;
     currentQuestion = 0;
     timeLeft = 60;
 
-    // Update score and timer
     document.getElementById('score').innerText = score;
     document.getElementById('timer').innerText = timeLeft;
 
-    // Start timer
     timer = setInterval(countdown, 1000);
 
-    // Load the first question
     loadQuestion();
 }
 

@@ -134,22 +134,24 @@
                             </div>
                             <!-- Training Hall (Activity Container) -->
                             <div id="activity-container" class="activity-container">
-                                <h1>Welcome to the Problem Solving Game!</h1>
+                                <h1>Welcome to the Math Problem Solving Game!</h1>
+                                <p>Test your math skills and try to solve problems within 60 seconds!</p>
                                 <button onclick="showDifficultyScreen()">Start Game</button>
-                                <button class="return top-left" title="return" onclick="goBack()">Go Back</button>
+                                <button class="return" title="return" onclick="goBack()">Go Back</button>
                             </div>
                         </div>
                         
                     
-                        <div id="difficulty-screen">
+                        <div id="difficulty-screen" style="display: none;">
                             <h1>Choose Difficulty</h1>
                             <button onclick="startGame('simple')">Simple</button>
                             <button onclick="startGame('intermediate')">Intermediate</button>
                             <button onclick="startGame('complex')">Complex</button>
+                            <button class="return" title="return" onclick="goBack()">Go Back</button>
                         </div>
                     
                         <!-- Game Screen -->
-                        <div class="game-container">
+                        <div class="game-container" id="game-container">
                             <h2 id="question-text">Solve the problem:</h2>
                             <div class="question-area">
                                 <span id="question"></span>
@@ -159,6 +161,7 @@
                             <p id="feedback"></p>
                             <div class="timer">Time Left: <span id="timer">60</span>s</div>
                             <div class="score">Score: <span id="score">0</span></div>
+                            <button class="return" title="return" onclick="goBack()">Go Back</button>
                         </div>
                     
                     

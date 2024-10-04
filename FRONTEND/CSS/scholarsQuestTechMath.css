@@ -190,8 +190,7 @@ a {
 }
 
 .lecture-container,
-.hands-on-container,
-.activity-container {
+.hands-on-container {
     z-index: 100;
     background-image: url("../RESOURCES/TECH/BACKGROUNDS/tech.jpg");
     background-position: center;
@@ -226,8 +225,8 @@ a {
 }
 
 .return:hover {
-    background-color: #e74c3c; /* Lighter red on hover */
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); /* Red glow */
+    background-color: #e74c3c; 
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); 
 }
 
 .return.top-left {
@@ -701,17 +700,26 @@ p.general {
     border: 1px solid #777;
   }
 
-#activity-container {
-    display: none;
+  #game-container {
+    width: 100%; 
     flex-direction: column;
+    height: 100vh;  
+    padding: 20px;
+    position: fixed;  
+    text-align: center;
+    z-index: 9999;  
+    border: 2px solid #0288d1;
+    display: none; 
+    top: 0;        
+    left: 0;     
+    background-image: url("../RESOURCES/TECH/BACKGROUNDS/tech.jpg");
+    background-position: center;
+    background-size: cover;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-image: url('scibkg.jpg'); 
-    background-size: cover;
-    background-position: center;
-    z-index: 1000;
 }
+
+
 
 #difficulty-screen {
     display: none;
@@ -719,50 +727,24 @@ p.general {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('scibkg.jpg');
+    background-image: url("../RESOURCES/TECH/BACKGROUNDS/tech.jpg");
     background-size: cover;
     background-position: center;
-    z-index: 1000;
+    z-index: 900;
 }
 
-/* Game Container Styling */
-.game-container {
-    display: none;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    width: 350px;
-    padding: 20px;
-    position: fixed;
-    text-align: center;
-    z-index: 9999;
-    border: 2px solid #0288d1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    align-items: center;
+.show-game {
+    display: flex;  
+    z-index: 2000;   
 }
 
-.timer, .score {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-#feedback {
-    color: #d32f2f;
+.game-container h1, h2 {
+    color: #0288d1;
     font-weight: bold;
 }
 
-#answer-input input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid #0288d1;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-#difficulty-screen button {
-    background-color: #0288d1;
+.game-container button {
+    background-color: #0288d1; /* Chemistry blue */
     border: none;
     color: white;
     padding: 12px 20px;
@@ -771,8 +753,117 @@ p.general {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    
 }
 
-#difficulty-screen button:hover {
+.game-container button:hover {
     background-color: #0277bd;
 }
+
+/* Timer and score panel */
+.timer, .score {
+    font-size: 18px;
+    color: #0277bd;
+    margin-bottom: 15px;
+}
+
+.timer span, .score span {
+    font-weight: bold;
+    color: #d32f2f; /* Red for visibility */
+}
+
+/* End message */
+#endMessage {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #007bff;
+}
+
+/* Image container styling */
+.image-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Input styling */
+.input-container input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #0288d1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+#difficulty-screen {
+    z-index: 600; 
+    position: fixed;  
+    top: 0;
+    left: 0;
+    width: 100%;        
+    height: 100vh;     
+    background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* Feedback message */
+#feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #d32f2f;
+}
+
+/* Start screen styling */
+#activity-container {
+    background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* From Uiverse.io by cssbuttons-io */ 
+button {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin: 10px;
+  }
+  
+  button:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  button:active {
+    transform: translateY(-1px);
+  }

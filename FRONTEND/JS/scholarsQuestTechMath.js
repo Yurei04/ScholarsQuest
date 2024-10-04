@@ -1,7 +1,7 @@
 function enter(containerId) {
     console.log("Entering container: ", containerId); // Debugging log
 
-    document.querySelectorAll('.lecture-container, .hands-on-container, .activity-container').forEach(container => {
+    document.querySelectorAll('.lecture-container, .hands-on-container, .activity-container, .game-container').forEach(container => {
         container.classList.remove('active');
     });
 
