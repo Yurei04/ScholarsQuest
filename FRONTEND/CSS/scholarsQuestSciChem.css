@@ -678,24 +678,21 @@ p.general {
 
   #game-container {
     background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     width: 100%; 
     height: 100vh;  
     padding: 20px;
+    top: 0;
+    left: 0;
     position: fixed;  
     text-align: center;
     z-index: 9999;  
-    border: 2px solid #0288d1;
+    border: 2px solid #d1ce02;
     display: none; 
-    top: 0;        
-    left: 0;     
     background-image: 
-    linear-gradient(rgba(208, 169, 69, 0.7), rgba(34, 27, 5, 0.7)), 
+    linear-gradient(rgba(73, 59, 26, 0.7), rgba(34, 27, 5, 0.7)), 
     url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
     background-position: center;
     background-size: cover;
-    display: flex;
     align-items: center;
     justify-content: center;
 }

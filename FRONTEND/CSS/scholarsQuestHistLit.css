@@ -45,7 +45,7 @@ a {
 
 .wrapper h1 + p {
     margin-bottom: 5%;
-    color: #1aa81f;
+    color: #ffffff;
 }
 
 .scoreWrap {
@@ -68,8 +68,8 @@ a {
 
 .wrapper button {
     border: none;
-    background-color: #FF7373;
-    box-shadow: 0px 5px 0px 0px #CE4646;
+    background-color: #69e9a7;
+    box-shadow: 0px 5px 0px 0px #46ce6f;
     outline: none;
     border-radius: 5px;
     padding: 10px 15px;
@@ -89,14 +89,14 @@ a {
 
 /* Hover Effect on Buttons */
 .wrapper button:hover {
-    background-color: #f75d5d;
-    box-shadow: 0px 0px 15px 5px rgba(255, 115, 115, 0.7);
+    background-color: #5df796;
+    box-shadow: 0px 0px 15px 5px rgba(115, 255, 169, 0.7);
     color: #fff;
 }
 
 .scoreWrap p, .scoreWrap span, .timeWrap p, .timeWrap span {
     font-size: 30px;
-    color: #FF7373;
+    color: #ffffff;
 }
 
 .wordsWrap {
