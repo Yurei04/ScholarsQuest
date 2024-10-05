@@ -170,7 +170,11 @@
                             <img id="image2" src="img2.jpg" alt="Image 2">
                         </div>
                         <div class="input-container">
-                            <input type="text" id="wordGuess" placeholder="Enter the word">
+                                <div class="input-container-inner">
+                                <input placeholder="Enter the word" class="input-field" type="text" id="wordGuess">
+                                <label for="input-field" class="input-label">Enter text</label>
+                                <span class="input-highlight"></span>
+                                </div>
                             <button onclick="checkAnswer()">Submit</button>
                         </div>
                         <p id="feedback"></p>

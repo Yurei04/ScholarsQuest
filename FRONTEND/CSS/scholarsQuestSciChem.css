@@ -10,7 +10,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100vh;
-    color: #fff;
+    color: #6d6900;
     font-family: "MedievalSharp", cursive;
     font-weight: 400;
     background-color: #424242;
@@ -181,6 +181,8 @@ a {
     left: 0;
     width: 100vw;
     height: 100vh;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     display: none;
     visibility: hidden;
@@ -192,7 +194,9 @@ a {
 .lecture-container,
 .hands-on-container {
     z-index: 100; 
-    background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
+    background-image: 
+    linear-gradient(rgba(208, 169, 69, 0.7), rgba(34, 27, 5, 0.7)), 
+    url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -215,7 +219,7 @@ a {
 }
 
 .active {
-    display: block;
+    display: flex;
     visibility: visible;
     opacity: 1;
 }
@@ -686,7 +690,9 @@ p.general {
     display: none; 
     top: 0;        
     left: 0;     
-    background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
+    background-image: 
+    linear-gradient(rgba(208, 169, 69, 0.7), rgba(34, 27, 5, 0.7)), 
+    url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
     background-position: center;
     background-size: cover;
     display: flex;
@@ -701,12 +707,12 @@ p.general {
 }
 
 .game-container h1, h2 {
-    color: #0288d1;
+    color: #ffffff;
     font-weight: bold;
 }
 
 .game-container button {
-    background-color: #0288d1; /* Chemistry blue */
+    background-color: #ffffff; /* Chemistry blue */
     border: none;
     color: white;
     padding: 12px 20px;
@@ -719,13 +725,13 @@ p.general {
 }
 
 .game-container button:hover {
-    background-color: #0277bd;
+    background-color: #ffffff;
 }
 
 /* Timer and score panel */
 .timer, .score {
     font-size: 18px;
-    color: #0277bd;
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
@@ -738,7 +744,7 @@ p.general {
 #endMessage {
     margin-top: 20px;
     font-size: 20px;
-    color: #007bff;
+    color: #ffffff;
 }
 
 /* Image container styling */
@@ -749,18 +755,31 @@ p.general {
 }
 
 .image-container img {
-    width: 120px;
-    height: 120px;
+    width: 300px;
+    height: 300px;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Input styling */
+
+.input-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+
 .input-container input[type="text"] {
-    width: 80%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    width: 100%;
     padding: 10px;
-    border: 1px solid #0288d1;
+    color: #fff;
+    border: 1px solid #ffffff;
     border-radius: 5px;
     margin-bottom: 10px;
 }
@@ -768,12 +787,14 @@ p.general {
 
 #difficulty-screen {
     z-index: 900; 
-    position: fixed;  /* or use 'fixed' if you want it to stay in place while scrolling */
+    position: fixed;  
     top: 0;
     left: 0;
-    width: 100%;        /* Ensures it covers the whole screen */
-    height: 100vh;      /* Full viewport height */
-    background-image: url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
+    width: 100%;        
+    height: 100vh;      
+    background-image: 
+    linear-gradient(rgba(208, 169, 69, 0.7), rgba(34, 27, 5, 0.7)), 
+    url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
     background-position: center;
     background-size: cover;
     display: flex;
@@ -791,15 +812,19 @@ p.general {
 }
 
 /* Start screen styling */
-#start-screen {
-    background-image: url('science-bg.jpg'); /* Placeholder for lab-themed background */
+#activity-container {
+    background-image: 
+    linear-gradient(rgba(208, 169, 69, 0.7), rgba(34, 27, 5, 0.7)), 
+    url("../RESOURCES/SCI/BACKGROUNDS/scibkg.jpg");
     background-size: cover;
+    color: #fff;
     background-position: center;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    place-items: center;
 }
 
 #difficulty-screen {
@@ -847,3 +872,54 @@ button {
   button:active {
     transform: translateY(-1px);
   }
+
+.input-container-inner {
+    position: relative;
+    margin: 20px;
+  }
+  
+  /* Input field */
+  .input-field {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background-color: transparent;
+  }
+  
+  /* Input label */
+  .input-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0);
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  /* Input highlight */
+  .input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+  }
+  
+  /* Input field:focus styles */
+  .input-field:focus + .input-label {
+    top: -20px;
+    font-size: 12px;
+    color: #ffffff;
+  }
+  
+  .input-field:focus + .input-label + .input-highlight {
+    width: 100%;
+  }
+  

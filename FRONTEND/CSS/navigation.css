@@ -18,7 +18,7 @@ a {
     left: 0;
     top: 0;
     background-color: #04132f34;
-    z-index: 800;
+    z-index: 10000;
     color: #fff;
 }
 
